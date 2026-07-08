@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #F5F5F5;
+  --ink: #000000;
+  --card: #FFFFFF;
+  --sub: #3a3a3a;
+  --dot: #d8d8d8;
+}
+[data-theme="dark"] {
+  --bg: #0f0f14;
+  --ink: #F5F5F5;
+  --card: #191922;
+  --sub: #c9c9d1;
+  --dot: #26262e;
+}
+
+html, body { margin: 0; padding: 0; background: var(--bg); }
+
+body {
+  color: var(--ink);
+  background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  cursor: url("/images/cursor.png") 2 2, auto;
+  user-select: none;
+}
+
+a { color: #9333EA; text-decoration: none; }
+a:hover { color: #C084FC; }
+
+/* Sprite sheet animations. Sheet: 9 cols x 12 rows of 128px display frames.
+   Rows 0-3 walk (up/left/down/right), 4-7 slash, 8-11 idle (2 frames). */
+@keyframes kblink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes sprite-idle { from { background-position-x: 0px; } to { background-position-x: -256px; } }
+@keyframes sprite-walk { from { background-position-x: -128px; } to { background-position-x: -1152px; } }
+@keyframes sprite-slash { from { background-position-x: 0px; } to { background-position-x: -768px; } }
