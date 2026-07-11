@@ -18,7 +18,7 @@ export default function QuestLog() {
   const { t, sfx } = useApp();
   return (
     <PageShell>
-      <div className="max-w-[760px] mx-auto px-8 pt-28 pb-16 flex flex-col gap-8">
+      <div className="max-w-[760px] mx-auto px-8 pt-36 sm:pt-28 pb-16 flex flex-col gap-8">
         <div className="flex items-end justify-between gap-4">
           <div>
             <h1 className="font-pixel text-[clamp(16px,2.6vw,26px)] tracking-[3px] m-0" style={{ textShadow: "3px 3px 0 rgba(192,132,252,0.5)" }}>

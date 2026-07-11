@@ -19,7 +19,7 @@ export default function AboutPage() {
   const { typed } = useTypewriter(t.about.questText);
   return (
     <PageShell>
-      <div className="min-h-screen max-w-[1040px] mx-auto px-8 pt-24 pb-10 flex flex-col">
+      <div className="min-h-screen max-w-[1040px] mx-auto px-8 pt-32 sm:pt-24 pb-10 flex flex-col">
         <div className="my-auto flex flex-col gap-8">
         <div className="flex gap-2.5 flex-wrap">
           <Badge active>{t.about.badgeProfile}</Badge>

@@ -34,6 +34,9 @@ export default function Overworld() {
   const entering = useRef(false);
   const konami = useRef(0);
   const particles = useRef<Array<{ x: number; y: number; vx: number; vy: number; size: number; color: string; life: number }>>([]);
+  const tilt = useRef({ dx: 0, dy: 0 });          // device-tilt movement vector (touch devices)
+  const tiltBase = useRef<number | null>(null);   // neutral holding angle, calibrated on first reading
+  const tiltAsked = useRef(false);
 
   useEffect(() => {
     let seen = false;
@@ -76,6 +79,22 @@ export default function Overworld() {
     walkTarget.current = { x: r.left - s.left + r.width / 2 - 64, y: r.top - s.top + r.height * 0.4 - 116, folder: name };
     sfx("hover");
   }, [router, sfx]);
+
+  // Motion sensor: tilt the phone to walk. Only on touch devices; the phone's
+  // resting angle is calibrated from the first reading, then tilts past a small
+  // dead zone map to a movement vector.
+  useEffect(() => {
+    if (!window.matchMedia?.("(pointer: coarse)").matches) return;
+    const DEAD = 8, MAX = 24;
+    const norm = (v: number) => (Math.abs(v) < DEAD ? 0 : Math.max(-1, Math.min(1, (v - Math.sign(v) * DEAD) / (MAX - DEAD))));
+    const onOrient = (e: DeviceOrientationEvent) => {
+      if (e.beta == null || e.gamma == null) return;
+      if (tiltBase.current === null) tiltBase.current = e.beta;
+      tilt.current = { dx: norm(e.gamma), dy: norm(e.beta - tiltBase.current) };
+    };
+    window.addEventListener("deviceorientation", onOrient);
+    return () => window.removeEventListener("deviceorientation", onOrient);
+  }, []);
 
   // Keyboard: movement + K attack + Konami code.
   useEffect(() => {
@@ -127,7 +146,7 @@ export default function Overworld() {
               const tgt = walkTarget.current; walkTarget.current = null;
               if (tgt.folder) beginEnter(tgt.folder); else { h.anim = "idle"; h.t = 0; }
             } else { dx = ddx / dist; dy = ddy / dist; }
-          }
+          } else { dx = tilt.current.dx; dy = tilt.current.dy; }
         }
         if (dx || dy) {
           const mag = Math.hypot(dx, dy) || 1; dx /= mag; dy /= mag;
@@ -186,6 +205,13 @@ export default function Overworld() {
   }, [intro, booted, beginEnter]);
 
   const stageClick = (e: React.MouseEvent) => {
+    // iOS only exposes orientation events after an explicit permission request,
+    // which must come from a user gesture - the first tap does it.
+    if (!tiltAsked.current) {
+      tiltAsked.current = true;
+      const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<string> };
+      DOE.requestPermission?.().catch(() => {});
+    }
     if (entering.current) return;
     const stage = stageRef.current; if (!stage) return;
     const s = stage.getBoundingClientRect();

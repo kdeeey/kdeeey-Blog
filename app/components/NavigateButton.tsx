@@ -16,7 +16,7 @@ export default function NavigateButton() {
     [t.nav.contact, "/contact"],
   ];
   return (
-    <div className="fixed top-5 left-5 z-20 flex flex-col items-start gap-2.5">
+    <div className="fixed top-16 left-3 sm:top-5 sm:left-5 z-20 flex flex-col items-start gap-2.5">
       <PixelButton pill active onClick={() => setOpen((o) => !o)}>{t.nav.navigate}</PixelButton>
       {open && (
         <div className="flex flex-col items-start gap-2">

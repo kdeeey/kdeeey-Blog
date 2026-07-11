@@ -42,7 +42,7 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-24 pb-12">
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-32 sm:pt-24 pb-12">
         <h1 className="font-pixel text-[clamp(14px,2.4vw,22px)] tracking-[4px] text-center m-0">{t.contact.title}</h1>
 
         {/* Identity pill - focal point above the character */}
