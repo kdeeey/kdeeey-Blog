@@ -25,12 +25,12 @@ export default function SocialIcon({ label, title, href, bg, fontSize = 11, icon
       onMouseEnter={() => { sfx("hover"); onEnter?.(); }}
       onMouseLeave={onLeave}
       onClick={() => { sfx("click"); onActivate?.(); }}
-      className="w-12 h-12 rounded-full border-[3px] border-ink shadow-pixel flex items-center justify-center font-pixel text-white transition-transform duration-150 hover:scale-110 flex-none"
+      className="w-14 h-14 rounded-full border-[3px] border-ink shadow-pixel flex items-center justify-center font-pixel text-white transition-transform duration-150 hover:scale-110 flex-none"
       style={{ background: bg, fontSize }}
     >
       {icon ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={icon} alt={title} className="w-7 h-7 object-contain" style={{ filter: invertIcon ? "invert(1)" : undefined }} />
+        <img src={icon} alt={title} className="w-8 h-8 object-contain" style={{ filter: invertIcon ? "invert(1)" : undefined }} />
       ) : (
         <span>{label}</span>
       )}

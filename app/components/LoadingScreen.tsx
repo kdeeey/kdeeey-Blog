@@ -15,7 +15,7 @@ export default function LoadingScreen({ onDone, brief, skippable = true }: Loadi
   const { t, sfx } = useApp();
 
   useEffect(() => {
-    const step = brief ? 8 : 2;
+    const step = brief ? 12 : 2;
     const id = setInterval(() => {
       setProgress((p) => Math.min(100, p + step * (0.5 + Math.random())));
     }, 55);
@@ -26,7 +26,7 @@ export default function LoadingScreen({ onDone, brief, skippable = true }: Loadi
     if (progress >= 100 && !doneRef.current) {
       doneRef.current = true;
       if (!brief) sfx("fanfare");
-      const id = setTimeout(() => onDone?.(), brief ? 240 : 850);
+      const id = setTimeout(() => onDone?.(), brief ? 150 : 850);
       return () => clearTimeout(id);
     }
   }, [progress, brief, onDone, sfx]);

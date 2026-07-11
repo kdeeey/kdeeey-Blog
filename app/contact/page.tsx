@@ -42,37 +42,38 @@ export default function ContactPage() {
 
   return (
     <PageShell>
-      <div className="fixed inset-0 overflow-hidden">
-        {/* Character - left edge, standing on ground */}
-        <div className="absolute bottom-24 flex flex-col items-center" style={{ left: "clamp(24px, 7vw, 120px)" }}>
-          <SpeechBubble text={msg ?? b.default[idleIdx % b.default.length]} className="ml-16 -mb-[34px] z-[2]" />
-          <div className="w-80 h-80 flex items-end justify-center">
-            <Character anim={anim} dir={dir} scale={2.5} style={{ transition: "transform 0.25s ease", rotate: dir === 3 ? "4deg" : "0deg" }} />
-          </div>
-          <div className="w-80 h-3 bg-dot rounded-full mt-0.5" />
+      <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-24 pb-12">
+        <h1 className="font-pixel text-[clamp(14px,2.4vw,22px)] tracking-[4px] text-center m-0">{t.contact.title}</h1>
+
+        {/* Identity pill - focal point above the character */}
+        <div className="flex items-center gap-4 bg-[#111111] border-[3px] border-ink rounded-full py-2 pl-2.5 pr-9 shadow-[4px_4px_0_rgba(0,0,0,0.3)] min-w-[200px]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/profile-pic.jpg" alt="Karima" className="w-14 h-14 rounded-full object-cover object-top border-2 border-black" />
+          <span className="font-pixel text-[13px] text-[#F5F5F5]">{t.contact.handle}</span>
         </div>
-        {/* Socials - right column */}
-        <div className="absolute top-1/2 -translate-y-1/2 flex flex-col items-center gap-6" style={{ right: "clamp(24px, 8vw, 140px)" }}>
-          <div className="flex items-center gap-3.5 bg-[#111111] border-[3px] border-ink rounded-full py-1.5 pl-2 pr-7 shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/profile-pic.jpg" alt="Karima" className="w-12 h-12 rounded-full object-cover object-top border-2 border-black" />
-            <span className="font-pixel text-[11px] text-[#F5F5F5]">{t.contact.handle}</span>
+
+        {/* Speech bubble above the character */}
+        <div className="flex flex-col items-center">
+          <SpeechBubble text={msg ?? b.default[idleIdx % b.default.length]} className="z-[2]" />
+          <div className="w-52 h-52 flex items-end justify-center">
+            <Character anim={anim} dir={dir} scale={1.55} style={{ transition: "transform 0.25s ease", rotate: dir === 3 ? "4deg" : "0deg" }} />
           </div>
-          <div className="grid grid-cols-2 gap-x-5 gap-y-4 justify-items-center">
-            {socials.map((s) => (
-              <SocialIcon key={s.title} {...s} onEnter={() => enter(s.msg)} onLeave={leave} onActivate={activate} />
-            ))}
-          </div>
+          <div className="w-52 h-2.5 bg-dot rounded-full mt-0.5" />
         </div>
-        {/* Bottom: back + footer */}
-        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3.5 pb-0">
-          <BackButton />
-          <div className="w-full border-t-[3px] border-ink bg-card py-3.5 flex justify-center">
-            <a href={links.mail} onMouseEnter={() => sfx("hover")} className="font-pixel text-[8px] tracking-wide">
-              {t.contact.sendRaven + " ▶ KARIMAEDDAHHAK@GMAIL.COM"}
-            </a>
-          </div>
+
+        {/* Socials - single centered row (wraps 4+3 on small screens) */}
+        <div className="flex flex-wrap justify-center gap-6 max-w-[600px]">
+          {socials.map((s) => (
+            <SocialIcon key={s.title} {...s} onEnter={() => enter(s.msg)} onLeave={leave} onActivate={activate} />
+          ))}
         </div>
+
+        {/* Email */}
+        <a href={links.mail} onMouseEnter={() => sfx("hover")} onClick={() => sfx("click")} className="font-pixel text-[9px] tracking-wide text-center leading-loose">
+          {t.contact.sendRaven + " — KARIMAEDDAHHAK@GMAIL.COM"}
+        </a>
+
+        <BackButton />
       </div>
     </PageShell>
   );

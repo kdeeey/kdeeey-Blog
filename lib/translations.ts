@@ -82,7 +82,7 @@ export interface Translation {
     difficulty: string; viewWriteup: string; locked: string;
   };
   contact: {
-    handle: string; sendRaven: string;
+    title: string; handle: string; sendRaven: string;
     bubbles: {
       default: string[];
       linkedin: string; github: string; tryhackme: string;
@@ -266,6 +266,7 @@ export const translations: Record<Lang, Translation> = {
       machine: "MACHINE", difficulty: "DIFFICULTY", viewWriteup: "VIEW WRITEUP", locked: "???",
     },
     contact: {
+      title: "JOIN MY PARTY",
       handle: "@kdeeey",
       sendRaven: "SEND A RAVEN",
       bubbles: {
@@ -450,6 +451,7 @@ export const translations: Record<Lang, Translation> = {
       machine: "MACHINE", difficulty: "DIFFICULTÉ", viewWriteup: "VOIR WRITEUP", locked: "???",
     },
     contact: {
+      title: "REJOINS MA PARTIE",
       handle: "@kdeeey",
       sendRaven: "ENVOYER UN CORBEAU",
       bubbles: {

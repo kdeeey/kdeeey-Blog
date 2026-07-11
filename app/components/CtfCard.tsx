@@ -12,7 +12,7 @@ export default function CtfCard({ item }: { item: CtfItem }) {
         <span className="font-pixel text-[10px] border-2 border-ink px-3 py-2" style={{ background: item.badgeBg, color: item.badgeColor }}>{item.title}</span>
         <span className="font-pixel text-[8px] text-green-600">{item.xp}</span>
         <span className={"font-pixel text-[8px] " + (done ? "text-green-600" : "text-folderyellow")}>
-          {(done ? "✅ " + t.common.completed : "🔄 " + t.common.inProgress)}
+          {done ? t.common.completed : t.common.inProgress}
         </span>
       </div>
       <p className="font-body text-[14.5px] leading-relaxed text-sub m-0">{item.desc}</p>

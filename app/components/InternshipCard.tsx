@@ -39,7 +39,7 @@ export default function InternshipCard(p: InternshipCardProps) {
         <div className="flex items-center gap-3 flex-wrap">
           <span className="font-pixel text-[9px] bg-[#111111] text-white border-2 border-ink px-2.5 py-2">{p.title}</span>
           <span className={"font-pixel text-[8px] " + (p.status === "completed" ? "text-green-600" : "text-folderyellow")}>
-            {p.status === "completed" ? "✅ " + t.common.completed : "⏳ " + t.common.upcoming}
+            {p.status === "completed" ? t.common.completed : t.common.upcoming}
           </span>
         </div>
         <div className="font-body text-[13.5px] font-semibold text-ink">{p.role}</div>
@@ -52,7 +52,7 @@ export default function InternshipCard(p: InternshipCardProps) {
           onMouseEnter={() => sfx("hover")}
           className="flex items-center gap-2.5 bg-bg border-2 border-ink px-3.5 py-2.5 font-pixel text-[8px] text-ink text-left hover:bg-folderyellow hover:text-black"
         >
-          <span className="inline-block transition-transform duration-200 text-purple" style={{ transform: open ? "rotate(90deg)" : "none" }}>{"▶"}</span>
+          <span className="inline-block w-0 h-0 border-y-[5px] border-y-transparent border-l-[7px] border-l-purple transition-transform duration-200" style={{ transform: open ? "rotate(90deg)" : "none" }} />
           {t.internships.projectsHdr + " (" + p.projects.length + ")"}
         </button>
         <div className="overflow-hidden transition-[max-height] duration-300" style={{ maxHeight: open ? 900 : 0 }}>
@@ -70,8 +70,8 @@ export default function InternshipCard(p: InternshipCardProps) {
                 <div className="font-pixel text-[8px] leading-relaxed text-ink">{proj.title}</div>
                 {proj.desc && <p className="font-body text-xs leading-normal text-sub m-0">{proj.desc}</p>}
                 <div className="flex gap-2 flex-wrap">
-                  {proj.writeup && <PixelButton small href={proj.writeup} download={proj.writeup.split("/").pop()}>{"📄 " + (proj.writeupLabel ?? "WRITEUP")}</PixelButton>}
-                  {proj.repo && <PixelButton small href={proj.repo} external>{"🔗 " + t.common.viewRepo + " ▶"}</PixelButton>}
+                  {proj.writeup && <PixelButton small href={proj.writeup} download={proj.writeup.split("/").pop()}>{proj.writeupLabel ?? "WRITEUP"}</PixelButton>}
+                  {proj.repo && <PixelButton small href={proj.repo} external>{t.common.viewRepo + " >"}</PixelButton>}
                   {proj.writeupSoon && <span className="font-pixel text-[7px] text-sub border-2 border-ink bg-card px-2.5 py-2 shadow-pixelSm">{t.common.writeupSoon}</span>}
                 </div>
               </div>

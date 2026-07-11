@@ -12,9 +12,9 @@ export default function HtbLabCard({ lab }: { lab?: HtbLab }) {
       <div className="font-pixel text-[8px] text-sub">{t.htb.difficulty + ": " + (lab?.difficulty ?? t.htb.locked)}</div>
       <div className="flex flex-wrap gap-1.5">{(lab?.tags ?? ["???"]).map((tag) => <Tag key={tag}>{tag}</Tag>)}</div>
       {lab?.writeup ? (
-        <a href={lab.writeup} download onMouseEnter={() => sfx("hover")} className="font-pixel text-[8px] mt-auto">{"📄 " + t.htb.viewWriteup + " ▶"}</a>
+        <a href={lab.writeup} download onMouseEnter={() => sfx("hover")} className="font-pixel text-[8px] mt-auto">{t.htb.viewWriteup + " >"}</a>
       ) : (
-        <div className="font-pixel text-[8px] text-sub mt-auto">{"🔒 " + t.htb.viewWriteup + " ▶"}</div>
+        <div className="font-pixel text-[8px] text-sub mt-auto">{t.htb.viewWriteup}</div>
       )}
     </div>
   );

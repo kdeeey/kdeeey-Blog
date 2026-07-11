@@ -131,7 +131,7 @@ export default function Overworld() {
         }
         if (dx || dy) {
           const mag = Math.hypot(dx, dy) || 1; dx /= mag; dy /= mag;
-          const sp = 4 * dt / 16;
+          const sp = 8 * dt / 16;
           h.x = Math.max(-24, Math.min(W - 104, h.x + dx * sp));
           h.y = Math.max(96, Math.min(H - 148, h.y + dy * sp));
           h.dir = (Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 1 : 3) : (dy < 0 ? 0 : 2)) as Direction;
@@ -143,8 +143,8 @@ export default function Overworld() {
           const f = Math.floor((h.t / 1000) * 13);
           if (f >= 6) { h.anim = "idle"; h.t = 0; row = 8 + h.dir; col = 0; }
           else { row = 4 + h.dir; col = f; }
-        } else if (h.anim === "walk") { row = h.dir; col = 1 + Math.floor((h.t / 1000) * 11) % 8; }
-        else { row = 8 + h.dir; col = Math.floor((h.t / 1000) * 2) % 2; }
+        } else if (h.anim === "walk") { row = h.dir; col = 1 + Math.floor((h.t / 500) * 11) % 8; }
+        else { row = 8 + h.dir; col = Math.floor((h.t / 500) * 2) % 2; }
         el.style.transform = "translate(" + h.x + "px," + h.y + "px)";
         el.style.backgroundPosition = (-col * 128) + "px " + (-row * 128) + "px";
 

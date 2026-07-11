@@ -24,7 +24,7 @@ export default function ProjectCard({ item, image, imageAlt }: { item: ProjectIt
         </div>
         {item.repo && (
           <a href={item.repo} target="_blank" rel="noopener" onMouseEnter={() => sfx("hover")} className="font-pixel text-[8px] mt-1.5">
-            {t.common.viewRepo + " ▶"}
+            {t.common.viewRepo + " >"}
           </a>
         )}
       </div>

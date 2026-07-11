@@ -19,7 +19,8 @@ export default function AboutPage() {
   const { typed } = useTypewriter(t.about.questText);
   return (
     <PageShell>
-      <div className="max-w-[1040px] mx-auto px-8 pt-24 pb-20 flex flex-col gap-8">
+      <div className="min-h-screen max-w-[1040px] mx-auto px-8 pt-24 pb-10 flex flex-col">
+        <div className="my-auto flex flex-col gap-8">
         <div className="flex gap-2.5 flex-wrap">
           <Badge active>{t.about.badgeProfile}</Badge>
           <Badge>{t.about.badgeLvl}</Badge>
@@ -29,10 +30,10 @@ export default function AboutPage() {
         <div className="flex gap-10 items-stretch flex-wrap">
           <div className="flex-[2_1_240px] min-w-[220px] flex flex-col items-center justify-end pb-2">
             <SpeechBubble text={t.about.bubble} className="ml-12 -mb-4 z-[2]" />
-            <div className="w-[200px] h-[200px] flex items-end justify-center">
-              <Character anim="idle" scale={1.55} />
+            <div className="w-[220px] h-[220px] flex items-end justify-center">
+              <Character anim="idle" scale={1.7} />
             </div>
-            <div className="w-[210px] h-2.5 bg-dot rounded-full mt-0.5" />
+            <div className="w-[230px] h-2.5 bg-dot rounded-full mt-0.5" />
           </div>
           <div className="flex-[3_1_420px] min-w-[320px] bg-card border-[3px] border-ink shadow-pixelLg p-7 flex flex-col gap-5">
             <div>
@@ -54,7 +55,7 @@ export default function AboutPage() {
             <div className="flex flex-col gap-2.5">
               <div className="font-pixel text-[9px] text-sub">{t.about.currentQuest}</div>
               <div className="font-pixel text-[10px] text-ink leading-loose min-h-[2em]">
-                {typed}<span className="animate-[kblink_0.8s_infinite] text-purple">{"▎"}</span>
+                {typed}<span className="inline-block w-[3px] h-[1.1em] bg-purple align-text-bottom animate-[kblink_0.8s_infinite]" />
               </div>
             </div>
           </div>
@@ -69,8 +70,9 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="self-center">
-            <PixelButton href="/CV_ED_DAHHAK_KARIMA_.pdf" download="CV_ED_DAHHAK_KARIMA_.pdf">{"▼ " + t.about.downloadCV}</PixelButton>
+            <PixelButton href="/CV_ED_DAHHAK_KARIMA_.pdf" download="CV_ED_DAHHAK_KARIMA_.pdf">{t.about.downloadCV}</PixelButton>
           </div>
+        </div>
         </div>
       </div>
     </PageShell>
