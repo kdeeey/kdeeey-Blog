@@ -210,7 +210,7 @@ export default function Overworld() {
   return (
     <main ref={stageRef} onClick={stageClick} className="fixed inset-0 overflow-hidden">
       <TopBar />
-      <div className="absolute top-0 inset-x-0 flex flex-col items-center gap-5 pt-14 px-5 pointer-events-none">
+      <div className="absolute top-0 inset-x-0 flex flex-col items-center gap-5 pt-28 sm:pt-14 px-5 pointer-events-none">
         <h1 className="font-pixel text-[clamp(18px,3vw,30px)] tracking-[4px] text-center m-0">{t.home.title}</h1>
         <p className="font-pixel text-[9px] tracking-[2px] text-sub text-center leading-[1.9] m-0">
           {t.home.subtitle}<span className="animate-[kblink_1s_infinite]">_</span>
@@ -221,12 +221,12 @@ export default function Overworld() {
         className="absolute left-0 top-0 w-32 h-32 z-[2] pointer-events-none will-change-transform"
         style={{ backgroundImage: "url(/sprites/character.png)", backgroundSize: "1152px 1536px", backgroundPosition: "0px -1280px", imageRendering: "pixelated" }}
       />
-      <div className="absolute inset-x-0 bottom-[11%] flex justify-center gap-20">
+      <div className="absolute inset-x-0 bottom-[11%] flex justify-center gap-5 sm:gap-12 md:gap-20 px-3">
         <Folder ref={aboutRef} color="blue" label={t.home.aboutLabel} onClick={(e) => { e.stopPropagation(); walkToFolder("about", aboutRef); }} />
         <Folder ref={portfolioRef} color="pink" label={t.home.portfolioLabel} onClick={(e) => { e.stopPropagation(); walkToFolder("portfolio", portfolioRef); }} />
         <Folder ref={contactRef} color="unsat-blue" label={t.home.contactLabel} onClick={(e) => { e.stopPropagation(); walkToFolder("contact", contactRef); }} />
       </div>
-      <div className="absolute left-5 bottom-5 font-pixel text-[8px] text-sub leading-loose whitespace-pre-line">{t.home.hud}</div>
+      <div className="hidden sm:block absolute left-5 bottom-5 font-pixel text-[8px] text-sub leading-loose whitespace-pre-line">{t.home.hud}</div>
       <canvas ref={confettiRef} className="absolute inset-0 pointer-events-none z-[70]" />
       {leaving && (
         <div className="absolute inset-0 bg-black z-[65] flex items-center justify-center animate-[fadein_0.32s_ease]" style={{ animation: "none", opacity: 1 }}>
