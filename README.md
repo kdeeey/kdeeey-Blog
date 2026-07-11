@@ -93,3 +93,11 @@ public/
 - Hackathon Instagram/LinkedIn post URLs: add link buttons in `HackathonCard` when available.
 - `next/image` is intentionally NOT used for pixel art (resampling would blur it); plain `<img>` + `image-rendering: pixelated`.
 - This code was generated as a design handoff and has not been run through `next build` — expect at most minor type/lint fixes.
+
+## License
+
+The source code is licensed under the [MIT License](LICENSE).
+
+Personal content is **not** covered by the MIT license and may not be reused:
+photos, the CV, certificates, writeups, and other personal images in `public/`.
+Third-party assets (e.g. the character sprite sheet) remain under their own licenses.
