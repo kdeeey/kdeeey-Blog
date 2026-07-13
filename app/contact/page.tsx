@@ -38,6 +38,8 @@ export default function ContactPage() {
     { label: "X", title: "X", href: links.x, bg: "#111111", msg: b.x },
     { label: "DC", title: "Discord", href: links.discord, bg: "#5865F2", msg: b.discord, icon: "/images/discord-icon.png" },
     { label: "CTF", title: "CTFtime", href: links.ctftime, bg: "#22C55E", msg: b.ctftime, fontSize: 8 },
+    { label: "M", title: "Medium", href: links.medium, bg: "#111111", msg: b.medium, icon: "/images/medium_logo.png" },
+    { label: "SP", title: "Spotify", href: links.spotify, bg: "#FFFFFF", msg: b.spotify, icon: "/images/spotify_logo.png" },
   ];
 
   return (
@@ -62,7 +64,7 @@ export default function ContactPage() {
         </div>
 
         {/* Socials - single centered row (wraps 4+3 on small screens) */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-[600px]">
+        <div className="flex flex-wrap justify-center gap-6 max-w-[760px]">
           {socials.map((s) => (
             <SocialIcon key={s.title} {...s} onEnter={() => enter(s.msg)} onLeave={leave} onActivate={activate} />
           ))}

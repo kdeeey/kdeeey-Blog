@@ -22,6 +22,7 @@ export interface Translation {
   home: {
     title: string; subtitle: string; hud: string;
     aboutLabel: string; portfolioLabel: string; contactLabel: string;
+    catPrompt: string; catBubbles: string[];
   };
   loading: { label: string; skip: string };
   nav: {
@@ -33,10 +34,11 @@ export interface Translation {
     badgeProfile: string; badgeLvl: string; badgeClass: string;
     badgeGuild: string; bubble: string; name: string;
     lvl: string; age: string; clazz: string; guild: string;
-    specialty: string; specialties: string[];
     currentQuest: string; questText: string;
     guildAffiliation: string; uemfName: string; uemfProg: string;
     downloadCV: string;
+    skillsTitle: string;
+    skills: Array<{ title: string; items: string[] }>;
   };
   portfolio: {
     questLog: string; selectCategory: string;
@@ -47,6 +49,7 @@ export interface Translation {
   };
   projects: {
     title: string; teamProject: string;
+    categories: { web: string; malware: string; ai: string };
     items: {
       nood: ProjectItem; malware: ProjectItem;
       campusops: ProjectItem; satellite: ProjectItem;
@@ -65,7 +68,7 @@ export interface Translation {
     };
   };
   ctf: {
-    title: string;
+    title: string; online: string; local: string;
     inpt: CtfEntry; ensi: CtfEntry; htb: CtfEntry;
   };
   hackathons: {
@@ -80,6 +83,8 @@ export interface Translation {
   htb: {
     title: string; sub: string; machine: string;
     difficulty: string; viewWriteup: string; locked: string;
+    tabs: { htb: string; cpts: string; other: string };
+    otherDesc: string;
   };
   contact: {
     title: string; handle: string; sendRaven: string;
@@ -87,7 +92,7 @@ export interface Translation {
       default: string[];
       linkedin: string; github: string; tryhackme: string;
       mail: string; x: string; discord: string;
-      ctftime: string; seeYou: string;
+      ctftime: string; medium: string; spotify: string; seeYou: string;
     };
   };
   common: {
@@ -110,6 +115,15 @@ export const translations: Record<Lang, Translation> = {
       aboutLabel: "About Me",
       portfolioLabel: "Portfolio",
       contactLabel: "Contact Me",
+      catPrompt: "PSST... CLICK ME! I'LL TELL YOU KARIMA'S SECRETS!",
+      catBubbles: [
+        "HI! I'M LUCKY. I LOVE COOKING AND TAKING CARE OF KARIMA!",
+        "MEOW! KARIMA LOVES PAINTING, GUITAR, VOLUNTEERING, AND COOKING!",
+        "PURR... MY HUMAN IS A CYBERSECURITY STUDENT. SHE FEEDS ME WELL!",
+        "LUCKY HERE! DID YOU KNOW KARIMA PLAYS GUITAR?",
+        "HI! I'M THE REAL BOSS HERE. KARIMA JUST WORKS FOR ME.",
+        "PSST... ONLINE SHE GOES BY KDEEEY!",
+      ],
     },
     loading: {
       label: "LOADING",
@@ -139,18 +153,20 @@ export const translations: Record<Lang, Translation> = {
       age: "AGE",
       clazz: "CLASS",
       guild: "GUILD",
-      specialty: "SPECIALTY:",
-      specialties: [
-        "OFFENSIVE SECURITY",
-        "AI SECURITY",
-        "HANDS-ON LABS",
-      ],
       currentQuest: "CURRENT QUEST:",
       questText: "BREAKING THINGS TO LEARN HOW TO DEFEND THEM.",
       guildAffiliation: "GUILD AFFILIATION",
       uemfName: "EURO-MEDITERRANEAN UNIVERSITY OF FES",
       uemfProg: "CYBERSECURITY ENGINEERING",
       downloadCV: "DOWNLOAD CV",
+      skillsTitle: "SKILLS & TOOLS",
+      skills: [
+        { title: "OFFENSIVE SECURITY", items: ["Offensive security fundamentals", "Network scanning", "Attack simulation"] },
+        { title: "DEFENSIVE SECURITY", items: ["Threat detection", "Real-time monitoring", "Anomaly detection with Isolation Forest", "Anomaly detection with LSTM Autoencoder"] },
+        { title: "CLOUD & INFRASTRUCTURE", items: ["Docker", "Linux CLI", "Git", "Virtual Machines"] },
+        { title: "AI & MACHINE LEARNING", items: ["Hugging Face", "LLMs", "RAG", "Prompt engineering", "Basic fine-tuning", "Machine learning models"] },
+        { title: "PROGRAMMING & DEVELOPMENT", items: ["Python", "C/C++", "SQL"] },
+      ],
     },
     portfolio: {
       questLog: "QUEST LOG",
@@ -161,12 +177,13 @@ export const translations: Record<Lang, Translation> = {
         ctf: { pre: "COMPETITIVE MODE", cat: "CTF", sub: "3 QUESTS COMPLETED" },
         hackathons: { pre: "BOSS BATTLES", cat: "HACKATHONS", sub: "3 BATTLES FOUGHT" },
         certificates: { pre: "ACHIEVEMENTS UNLOCKED", cat: "CERTIFICATES", sub: "1 UNLOCKED · 1 IN PREPARATION" },
-        htb: { pre: "TRAINING GROUNDS", cat: "HTB LABS", sub: "WRITEUPS COMING SOON" },
+        htb: { pre: "TRAINING GROUNDS", cat: "LABS", sub: "WRITEUPS COMING SOON" },
       },
     },
     projects: {
       title: "CRAFTED ITEMS · PROJECTS",
       teamProject: "TEAM PROJECT",
+      categories: { web: "WEB SECURITY", malware: "MALWARE ANALYSIS", ai: "AI & MACHINE LEARNING" },
       items: {
         nood: {
           title: "NOOD · AI COMMUNICATION COACH",
@@ -216,6 +233,8 @@ export const translations: Record<Lang, Translation> = {
     },
     ctf: {
       title: "COMPETITIVE MODE · CTF",
+      online: "ONLINE CTFs",
+      local: "LOCAL CTFs",
       inpt: {
         title: "INPT CTF", xp: "+250 XP",
         desc: "Challenges across web security, cryptography, reverse engineering, forensics, and OSINT.",
@@ -262,8 +281,10 @@ export const translations: Record<Lang, Translation> = {
       comingSoon: "COMING SOON",
     },
     htb: {
-      title: "TRAINING GROUNDS · HTB LABS", sub: "PRACTICE MAKES PERFECT",
+      title: "TRAINING GROUNDS · LABS", sub: "PRACTICE MAKES PERFECT",
       machine: "MACHINE", difficulty: "DIFFICULTY", viewWriteup: "VIEW WRITEUP", locked: "???",
+      tabs: { htb: "HTB LABS", cpts: "CPTS LABS", other: "OTHER LABS" },
+      otherDesc: "TryHackMe, VulnHub and more — coming soon.",
     },
     contact: {
       title: "JOIN MY PARTY",
@@ -275,8 +296,8 @@ export const translations: Record<Lang, Translation> = {
           "FIND ME ON CTFTIME!", "SEND ME A MESSAGE SCROLL!", "JOIN MY PARTY?",
         ],
         linkedin: "LET'S NETWORK!", github: "CHECK MY CODE!", tryhackme: "HACK TOGETHER?",
-        mail: "SEND ME A MESSAGE!", x: "FOLLOW ME!", discord: "JOIN MY SERVER!",
-        ctftime: "CAPTURE THE FLAG!", seeYou: "SEE YOU THERE!",
+        mail: "SEND ME A MESSAGE!", x: "FOLLOW ME!", discord: "ADD ME AS KDEEEY!",
+        ctftime: "CAPTURE THE FLAG!", medium: "READ MY WRITEUPS!", spotify: "LISTEN WITH ME!", seeYou: "SEE YOU THERE!",
       },
     },
     common: {
@@ -295,6 +316,15 @@ export const translations: Record<Lang, Translation> = {
       aboutLabel: "À Propos",
       portfolioLabel: "Portfolio",
       contactLabel: "Contact",
+      catPrompt: "PSST... CLIQUE SUR MOI! JE TE DIRAI LES SECRETS DE KARIMA!",
+      catBubbles: [
+        "SALUT! MOI C'EST LUCKY. J'ADORE CUISINER ET PRENDRE SOIN DE KARIMA!",
+        "MIAOU! KARIMA AIME LA PEINTURE, LA GUITARE, LE BÉNÉVOLAT ET LA CUISINE!",
+        "RONRON... MON HUMAINE ÉTUDIE LA CYBERSÉCURITÉ. ELLE ME NOURRIT BIEN!",
+        "C'EST LUCKY! TU SAVAIS QUE KARIMA JOUE DE LA GUITARE?",
+        "SALUT! LE VRAI BOSS ICI C'EST MOI. KARIMA TRAVAILLE POUR MOI.",
+        "PSST... EN LIGNE, ELLE S'APPELLE KDEEEY!",
+      ],
     },
     loading: {
       label: "CHARGEMENT",
@@ -324,18 +354,20 @@ export const translations: Record<Lang, Translation> = {
       age: "ÂGE",
       clazz: "CLASSE",
       guild: "GUILDE",
-      specialty: "SPÉCIALITÉ:",
-      specialties: [
-        "SÉCURITÉ OFFENSIVE",
-        "SÉCURITÉ IA",
-        "LABS PRATIQUES",
-      ],
       currentQuest: "QUÊTE ACTUELLE:",
       questText: "CASSER DES CHOSES POUR APPRENDRE À LES DÉFENDRE.",
       guildAffiliation: "AFFILIATION GUILDE",
       uemfName: "UNIVERSITÉ EURO-MÉDITERRANÉENNE DE FÈS",
       uemfProg: "INGÉNIERIE CYBERSÉCURITÉ",
       downloadCV: "TÉLÉCHARGER CV",
+      skillsTitle: "COMPÉTENCES & OUTILS",
+      skills: [
+        { title: "SÉCURITÉ OFFENSIVE", items: ["Fondamentaux de sécurité offensive", "Scan réseau", "Simulation d'attaques"] },
+        { title: "SÉCURITÉ DÉFENSIVE", items: ["Détection de menaces", "Surveillance en temps réel", "Détection d'anomalies avec Isolation Forest", "Détection d'anomalies avec LSTM Autoencoder"] },
+        { title: "CLOUD & INFRASTRUCTURE", items: ["Docker", "CLI Linux", "Git", "Machines virtuelles"] },
+        { title: "IA & MACHINE LEARNING", items: ["Hugging Face", "LLMs", "RAG", "Prompt engineering", "Fine-tuning de base", "Modèles de machine learning"] },
+        { title: "PROGRAMMATION & DEV", items: ["Python", "C/C++", "SQL"] },
+      ],
     },
     portfolio: {
       questLog: "JOURNAL DE QUÊTES",
@@ -346,12 +378,13 @@ export const translations: Record<Lang, Translation> = {
         ctf: { pre: "MODE COMPÉTITIF", cat: "CTF", sub: "3 QUÊTES TERMINÉES" },
         hackathons: { pre: "COMBATS DE BOSS", cat: "HACKATHONS", sub: "3 COMBATS MENÉS" },
         certificates: { pre: "SUCCÈS DÉBLOQUÉS", cat: "CERTIFICATS", sub: "1 DÉBLOQUÉ · 1 EN PRÉPARATION" },
-        htb: { pre: "TERRAINS D'ENTRAÎNEMENT", cat: "LABS HTB", sub: "WRITEUPS BIENTÔT" },
+        htb: { pre: "TERRAINS D'ENTRAÎNEMENT", cat: "LABS", sub: "WRITEUPS BIENTÔT" },
       },
     },
     projects: {
       title: "OBJETS FABRIQUÉS · PROJETS",
       teamProject: "PROJET D'ÉQUIPE",
+      categories: { web: "SÉCURITÉ WEB", malware: "ANALYSE DE MALWARE", ai: "IA & MACHINE LEARNING" },
       items: {
         nood: {
           title: "NOOD · COACH IA EN COMMUNICATION",
@@ -401,6 +434,8 @@ export const translations: Record<Lang, Translation> = {
     },
     ctf: {
       title: "MODE COMPÉTITIF · CTF",
+      online: "CTF EN LIGNE",
+      local: "CTF LOCAUX",
       inpt: {
         title: "INPT CTF", xp: "+250 XP",
         desc: "Défis en sécurité web, cryptographie, rétro-ingénierie, forensique et OSINT.",
@@ -447,8 +482,10 @@ export const translations: Record<Lang, Translation> = {
       comingSoon: "BIENTÔT DISPONIBLE",
     },
     htb: {
-      title: "TERRAINS D'ENTRAÎNEMENT · LABS HTB", sub: "LA PRATIQUE REND PARFAIT",
+      title: "TERRAINS D'ENTRAÎNEMENT · LABS", sub: "LA PRATIQUE REND PARFAIT",
       machine: "MACHINE", difficulty: "DIFFICULTÉ", viewWriteup: "VOIR WRITEUP", locked: "???",
+      tabs: { htb: "LABS HTB", cpts: "LABS CPTS", other: "AUTRES LABS" },
+      otherDesc: "TryHackMe, VulnHub et plus — bientôt.",
     },
     contact: {
       title: "REJOINS MA PARTIE",
@@ -460,8 +497,8 @@ export const translations: Record<Lang, Translation> = {
           "TROUVE-MOI SUR CTFTIME!", "ENVOIE-MOI UN PARCHEMIN!", "REJOINS MA PARTIE?",
         ],
         linkedin: "CRÉONS UN RÉSEAU!", github: "REGARDE MON CODE!", tryhackme: "HACKONS ENSEMBLE?",
-        mail: "ENVOIE-MOI UN MESSAGE!", x: "SUIS-MOI!", discord: "REJOINS MON SERVEUR!",
-        ctftime: "CAPTURE LE DRAPEAU!", seeYou: "À BIENTÔT!",
+        mail: "ENVOIE-MOI UN MESSAGE!", x: "SUIS-MOI!", discord: "Ajoute-moi en tant que kdeeey!",
+        ctftime: "CAPTURE LE DRAPEAU!", medium: "LIS MES WRITEUPS!", spotify: "ÉCOUTE AVEC MOI!", seeYou: "À BIENTÔT!",
       },
     },
     common: {
@@ -485,6 +522,8 @@ export const links = {
   x: "https://x.com/dahhak_karima",
   discord: "https://discord.gg/9nw8fd8z4",
   ctftime: "https://ctftime.org/user/243517",
+  medium: "https://medium.com/@karimaeddahhak",
+  spotify: "https://open.spotify.com/user/31cmw5vqgkmownoe4xyqdnkinx4e?si=6b3b0488799841b2",
   repos: {
     nood: "https://github.com/kdeeey/NOOD-",
     malware: "https://github.com/kdeeey/malware-features-extraction",

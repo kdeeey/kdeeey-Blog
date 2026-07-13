@@ -5,6 +5,7 @@ import { useApp } from "./providers";
 import Folder from "./components/Folder";
 import LoadingScreen from "./components/LoadingScreen";
 import TopBar from "./components/TopBar";
+import CatCharacter from "./components/CatCharacter";
 import type { Direction, CharacterAnim } from "@/types";
 
 const KEYMAP: Record<string, "l" | "r" | "u" | "d"> = {
@@ -253,6 +254,7 @@ export default function Overworld() {
         <Folder ref={contactRef} color="unsat-blue" label={t.home.contactLabel} onClick={(e) => { e.stopPropagation(); walkToFolder("contact", contactRef); }} />
       </div>
       <div className="hidden sm:block absolute left-5 bottom-5 font-pixel text-[8px] text-sub leading-loose whitespace-pre-line">{t.home.hud}</div>
+      <CatCharacter heroRef={heroRef} stageRef={stageRef} />
       <canvas ref={confettiRef} className="absolute inset-0 pointer-events-none z-[70]" />
       {leaving && (
         <div className="absolute inset-0 bg-black z-[65] flex items-center justify-center animate-[fadein_0.32s_ease]" style={{ animation: "none", opacity: 1 }}>

@@ -52,7 +52,7 @@ export default function ImageCarousel({ images, alt }: { images: string[]; alt: 
       >
         {images.map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img key={src} src={src} alt={alt + " " + (i + 1)} draggable={false} className="w-full h-full flex-none object-cover" />
+          <img key={src} src={src} alt={alt + " " + (i + 1)} draggable={false} className="w-full h-full flex-none object-contain bg-[#111111]" />
         ))}
       </div>
       {images.length > 1 && (

@@ -36,3 +36,9 @@ a:hover { color: #C084FC; }
 @keyframes sprite-idle { from { background-position-x: 0px; } to { background-position-x: -256px; } }
 @keyframes sprite-walk { from { background-position-x: -128px; } to { background-position-x: -1152px; } }
 @keyframes sprite-slash { from { background-position-x: 0px; } to { background-position-x: -768px; } }
+
+/* Lucky the cat: clean 4-frame strips (128x32) sliced from kdeeey_cat.png.
+   cat-sit loops the two front-facing sitting frames (breathe/blink);
+   cat-walk cycles all 4 side-walk frames. */
+@keyframes cat-sit { from { background-position-x: 0px; } to { background-position-x: -64px; } }
+@keyframes cat-walk { from { background-position-x: 0px; } to { background-position-x: -128px; } }

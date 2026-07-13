@@ -1,10 +1,41 @@
 "use client";
+import { useState } from "react";
 import { useApp } from "../providers";
 import { useTypewriter } from "@/lib/utils";
 import PageShell from "../components/PageShell";
 import Character from "../components/Character";
 import SpeechBubble from "../components/SpeechBubble";
 import PixelButton from "../components/PixelButton";
+
+function SkillsAccordion() {
+  const { t, sfx } = useApp();
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <div className="flex flex-col gap-3.5">
+      {t.about.skills.map((cat, i) => (
+        <div key={cat.title}>
+          <button
+            type="button"
+            onClick={() => { sfx("click"); setOpen(open === i ? null : i); }}
+            onMouseEnter={() => sfx("hover")}
+            className="w-full flex items-center gap-3.5 bg-card border-[3px] border-ink shadow-pixel px-4 py-3.5 font-pixel text-[9px] text-ink text-left transition-transform duration-150 hover:translate-x-1"
+          >
+            <span
+              className="inline-block w-0 h-0 border-y-[5px] border-y-transparent border-l-[7px] border-l-purple transition-transform duration-200 flex-none"
+              style={{ transform: open === i ? "rotate(90deg)" : "none" }}
+            />
+            {cat.title}
+          </button>
+          <div className="overflow-hidden transition-[max-height] duration-300" style={{ maxHeight: open === i ? 400 : 0 }}>
+            <div className="border-[3px] border-t-0 border-ink bg-bg px-6 py-4 font-pixel text-[8px] text-ink leading-[2.4]">
+              {cat.items.map((item) => <div key={item}>{"• " + item}</div>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Badge({ children, active }: { children: React.ReactNode; active?: boolean }) {
   return (
@@ -46,12 +77,6 @@ export default function AboutPage() {
               <div>{t.about.clazz + ": "}<span className="text-folderblue">CYBERSEC</span></div>
               <div>{t.about.guild + ": "}<span className="text-folderred">UEMF</span></div>
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="font-pixel text-[9px] text-sub">{t.about.specialty}</div>
-              <div className="font-pixel text-[9px] text-ink leading-[2.2]">
-                {t.about.specialties.map((s) => <div key={s}>{s}</div>)}
-              </div>
-            </div>
             <div className="flex flex-col gap-2.5">
               <div className="font-pixel text-[9px] text-sub">{t.about.currentQuest}</div>
               <div className="font-pixel text-[10px] text-ink leading-loose min-h-[2em]">
@@ -72,6 +97,11 @@ export default function AboutPage() {
           <div className="self-center">
             <PixelButton href="/CV_ED_DAHHAK_KARIMA_.pdf" download="CV_ED_DAHHAK_KARIMA_.pdf">{t.about.downloadCV}</PixelButton>
           </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="font-pixel text-[11px] text-ink">{t.about.skillsTitle}</div>
+          <div className="h-1 bg-ink w-44" />
+          <SkillsAccordion />
         </div>
         </div>
       </div>
