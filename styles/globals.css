@@ -42,3 +42,6 @@ a:hover { color: #C084FC; }
    cat-walk cycles all 4 side-walk frames. */
 @keyframes cat-sit { from { background-position-x: 0px; } to { background-position-x: -64px; } }
 @keyframes cat-walk { from { background-position-x: 0px; } to { background-position-x: -128px; } }
+
+/* Happy little hops (contact page, hovering a social link). */
+@keyframes khop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }

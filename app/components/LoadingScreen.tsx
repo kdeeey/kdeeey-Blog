@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Character from "./Character";
 import { useApp } from "../providers";
+import { trackIntroSkip } from "@/lib/analytics";
 
 export interface LoadingScreenProps {
   onDone?: () => void;
@@ -34,7 +35,11 @@ export default function LoadingScreen({ onDone, brief, skippable = true }: Loadi
   return (
     <div
       className="fixed inset-0 z-50 flex flex-col items-center bg-bg"
-      onClick={() => { if (skippable) setProgress(100); }}
+      onClick={() => {
+        if (!skippable) return;
+        if (!brief && progress < 100) trackIntroSkip();
+        setProgress(100);
+      }}
     >
       <div className="mt-[12vh] flex flex-col items-center gap-5">
         <div className="font-pixel text-[22px] tracking-[5px] text-ink">{t.loading.label}</div>

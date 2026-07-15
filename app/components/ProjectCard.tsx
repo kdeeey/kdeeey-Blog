@@ -1,6 +1,7 @@
 "use client";
 import { useApp } from "../providers";
 import Tag from "./Tag";
+import { trackExternalLink, trackProjectOpen } from "@/lib/analytics";
 import type { ProjectItem } from "@/types";
 
 export default function ProjectCard({ item, image, imageAlt }: { item: ProjectItem; image?: string; imageAlt?: string }) {
@@ -23,7 +24,14 @@ export default function ProjectCard({ item, image, imageAlt }: { item: ProjectIt
           {item.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
         </div>
         {item.repo && (
-          <a href={item.repo} target="_blank" rel="noopener" onMouseEnter={() => sfx("hover")} className="font-pixel text-[8px] mt-1.5">
+          <a
+            href={item.repo}
+            target="_blank"
+            rel="noopener"
+            onMouseEnter={() => sfx("hover")}
+            onClick={() => { trackProjectOpen(item.title); trackExternalLink(item.repo!); }}
+            className="font-pixel text-[8px] mt-1.5"
+          >
             {t.common.viewRepo + " >"}
           </a>
         )}

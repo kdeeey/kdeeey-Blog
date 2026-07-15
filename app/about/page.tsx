@@ -6,6 +6,7 @@ import PageShell from "../components/PageShell";
 import Character from "../components/Character";
 import SpeechBubble from "../components/SpeechBubble";
 import PixelButton from "../components/PixelButton";
+import { trackCvDownload } from "@/lib/analytics";
 
 function SkillsAccordion() {
   const { t, sfx } = useApp();
@@ -95,7 +96,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="self-center">
-            <PixelButton href="/CV_ED_DAHHAK_KARIMA_.pdf" download="CV_ED_DAHHAK_KARIMA_.pdf">{t.about.downloadCV}</PixelButton>
+            <PixelButton href="/CV_ED_DAHHAK_KARIMA_.pdf" download="CV_ED_DAHHAK_KARIMA_.pdf" onClick={trackCvDownload}>{t.about.downloadCV}</PixelButton>
           </div>
         </div>
         <div className="flex flex-col gap-4">

@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { translations, Lang, Dict } from "@/lib/translations";
+import { trackLanguageChange, trackThemeChange } from "@/lib/analytics";
 
 type SfxKind = "hover" | "click" | "nav" | "type" | "fanfare" | "secret";
 
@@ -37,6 +38,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
     try { localStorage.setItem("kd_lang", l); } catch {}
+    trackLanguageChange(l);
   }, []);
 
   const toggleDark = useCallback(() => {
@@ -44,6 +46,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       const next = !d;
       document.documentElement.dataset.theme = next ? "dark" : "";
       try { localStorage.setItem("kd_dark", next ? "1" : "0"); } catch {}
+      trackThemeChange(next ? "dark" : "light");
       return next;
     });
   }, []);

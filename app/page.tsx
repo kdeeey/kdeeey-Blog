@@ -18,7 +18,6 @@ export default function Overworld() {
   const { t, sfx } = useApp();
   const [booted, setBooted] = useState(false);      // localStorage checked
   const [intro, setIntro] = useState(false);        // showing first-visit loading
-  const [leaving, setLeaving] = useState<string | null>(null); // fade + brief loading, then route
 
   const stageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -68,8 +67,9 @@ export default function Overworld() {
     keys.current.clear();
     hero.current.anim = "idle"; hero.current.t = 0;
     sfx("click");
-    setTimeout(() => setLeaving(target), 280);
-  }, [sfx]);
+    // Straight to the page - no loading screen after the initial boot.
+    router.push(target === "portfolio" ? "/portfolio" : "/" + target);
+  }, [sfx, router]);
 
   const walkToFolder = useCallback((name: string, ref: React.RefObject<HTMLDivElement>) => {
     if (entering.current) return;
@@ -256,11 +256,6 @@ export default function Overworld() {
       <div className="hidden sm:block absolute left-5 bottom-5 font-pixel text-[8px] text-sub leading-loose whitespace-pre-line">{t.home.hud}</div>
       <CatCharacter heroRef={heroRef} stageRef={stageRef} />
       <canvas ref={confettiRef} className="absolute inset-0 pointer-events-none z-[70]" />
-      {leaving && (
-        <div className="absolute inset-0 bg-black z-[65] flex items-center justify-center animate-[fadein_0.32s_ease]" style={{ animation: "none", opacity: 1 }}>
-          <LoadingScreen brief skippable={false} onDone={() => router.push(leaving === "portfolio" ? "/portfolio" : "/" + leaving)} />
-        </div>
-      )}
     </main>
   );
 }

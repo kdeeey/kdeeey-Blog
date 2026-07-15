@@ -30,7 +30,6 @@ export default function QuestLog() {
             <div className="w-[92px] h-[92px] flex items-end justify-center">
               <Character anim="idle" scale={0.72} />
             </div>
-            <div className="w-[76px] h-2 bg-dot rounded-full mt-0.5" />
           </div>
         </div>
         <div className="flex flex-col gap-5">

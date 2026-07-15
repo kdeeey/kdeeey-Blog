@@ -1,6 +1,7 @@
 "use client";
 import { useApp } from "../providers";
 import Tag from "./Tag";
+import { trackCertificateOpen } from "@/lib/analytics";
 import type { CertItem } from "@/types";
 
 // CSS-drawn padlock (no emoji): rounded shackle over a solid body.
@@ -25,7 +26,10 @@ export default function CertificateCard({ item }: { item: CertItem }) {
     );
   }
   return (
-    <div className="relative bg-card border-[3px] border-ink shadow-pixelLg p-4 flex flex-col gap-2.5">
+    <div
+      className="relative bg-card border-[3px] border-ink shadow-pixelLg p-4 flex flex-col gap-2.5"
+      onClick={() => trackCertificateOpen(item.title)}
+    >
       <div className="w-full h-[180px] border-2 border-ink bg-[#f8f8f8] flex items-center justify-center overflow-hidden">
         {item.image ? (
           // eslint-disable-next-line @next/next/no-img-element

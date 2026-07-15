@@ -2,6 +2,7 @@
 import { useApp } from "../providers";
 import Tag from "./Tag";
 import PixelButton from "./PixelButton";
+import { trackExternalLink } from "@/lib/analytics";
 
 export interface InternProject {
   title: string;
@@ -76,7 +77,7 @@ export default function InternshipCard(p: InternshipCardProps) {
               {proj.desc && <p className="font-body text-xs leading-normal text-sub m-0">{proj.desc}</p>}
               <div className="flex gap-2 flex-wrap">
                 {proj.writeup && <PixelButton small href={proj.writeup} download={proj.writeup.split("/").pop()}>{proj.writeupLabel ?? "WRITEUP"}</PixelButton>}
-                {proj.repo && <PixelButton small href={proj.repo} external>{t.common.viewRepo + " >"}</PixelButton>}
+                {proj.repo && <PixelButton small href={proj.repo} external onClick={() => trackExternalLink(proj.repo!)}>{t.common.viewRepo + " >"}</PixelButton>}
                 {proj.writeupSoon && <span className="font-pixel text-[7px] text-sub border-2 border-ink bg-card px-2.5 py-2 shadow-pixelSm">{t.common.writeupSoon}</span>}
               </div>
             </div>

@@ -7,12 +7,13 @@ import Character from "../components/Character";
 import SpeechBubble from "../components/SpeechBubble";
 import SocialIcon from "../components/SocialIcon";
 import BackButton from "../components/BackButton";
-import type { Direction, CharacterAnim } from "@/types";
+import { trackExternalLink } from "@/lib/analytics";
+import type { CharacterAnim } from "@/types";
 
 export default function ContactPage() {
   const { t, sfx } = useApp();
   const [msg, setMsg] = useState<string | null>(null);
-  const [dir, setDir] = useState<Direction>(2);
+  const [happy, setHappy] = useState(false);
   const [anim, setAnim] = useState<CharacterAnim>("idle");
   const [idleIdx, setIdleIdx] = useState(0);
   const hovering = useRef(false);
@@ -22,8 +23,9 @@ export default function ContactPage() {
     return () => clearInterval(id);
   }, []);
 
-  const enter = (m: string) => { hovering.current = true; setDir(3); setMsg(m); };
-  const leave = () => { hovering.current = false; setDir(2); setMsg(null); };
+  // Hovering a social makes her hop happily, facing the visitor.
+  const enter = (m: string) => { hovering.current = true; setHappy(true); setMsg(m); };
+  const leave = () => { hovering.current = false; setHappy(false); setMsg(null); };
   const activate = () => {
     setAnim("slash"); setMsg(t.contact.bubbles.seeYou);
     setTimeout(() => setAnim("idle"), 520);
@@ -57,8 +59,8 @@ export default function ContactPage() {
         {/* Speech bubble above the character */}
         <div className="flex flex-col items-center">
           <SpeechBubble text={msg ?? b.default[idleIdx % b.default.length]} className="z-[2]" />
-          <div className="w-52 h-52 flex items-end justify-center">
-            <Character anim={anim} dir={dir} scale={1.55} style={{ transition: "transform 0.25s ease", rotate: dir === 3 ? "4deg" : "0deg" }} />
+          <div className="w-52 h-52 flex items-end justify-center" style={{ animation: happy ? "khop 0.5s ease-in-out infinite" : "none" }}>
+            <Character anim={anim} dir={2} scale={1.55} />
           </div>
           <div className="w-52 h-2.5 bg-dot rounded-full mt-0.5" />
         </div>
@@ -71,7 +73,7 @@ export default function ContactPage() {
         </div>
 
         {/* Email */}
-        <a href={links.mail} onMouseEnter={() => sfx("hover")} onClick={() => sfx("click")} className="font-pixel text-[9px] tracking-wide text-center leading-loose">
+        <a href={links.mail} onMouseEnter={() => sfx("hover")} onClick={() => { sfx("click"); trackExternalLink(links.mail); }} className="font-pixel text-[9px] tracking-wide text-center leading-loose">
           {t.contact.sendRaven + " — KARIMAEDDAHHAK@GMAIL.COM"}
         </a>
 

@@ -1,5 +1,6 @@
 "use client";
 import { useApp } from "../providers";
+import { trackExternalLink } from "@/lib/analytics";
 
 export interface SocialIconProps {
   label: string;            // short glyph text, e.g. "in", "X", "THM"
@@ -24,7 +25,7 @@ export default function SocialIcon({ label, title, href, bg, fontSize = 11, icon
       title={title}
       onMouseEnter={() => { sfx("hover"); onEnter?.(); }}
       onMouseLeave={onLeave}
-      onClick={() => { sfx("click"); onActivate?.(); }}
+      onClick={() => { sfx("click"); trackExternalLink(href); onActivate?.(); }}
       className="w-14 h-14 rounded-full border-[3px] border-ink shadow-pixel flex items-center justify-center font-pixel text-white transition-transform duration-150 hover:scale-110 flex-none"
       style={{ background: bg, fontSize }}
     >
