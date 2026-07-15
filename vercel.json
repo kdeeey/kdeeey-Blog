@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/d",
+      "destination": "/?utm_source=discord&utm_medium=bio&utm_campaign=profile_link",
+      "permanent": false
+    }
+  ]
+}
