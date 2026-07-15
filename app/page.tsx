@@ -49,6 +49,7 @@ export default function Overworld() {
     const colors = ["#22C55E", "#3B82F6", "#EF4444", "#EAB308", "#C084FC"];
     const c = confettiRef.current;
     if (c) { c.width = window.innerWidth; c.height = window.innerHeight; }
+    window.dispatchEvent(new Event("kd-confetti")); // Lucky parties along
     for (let i = 0; i < n; i++) {
       particles.current.push({
         x: x + (Math.random() - 0.5) * 60, y: y + (Math.random() - 0.5) * 20,
@@ -254,7 +255,7 @@ export default function Overworld() {
         <Folder ref={contactRef} color="unsat-blue" label={t.home.contactLabel} onClick={(e) => { e.stopPropagation(); walkToFolder("contact", contactRef); }} />
       </div>
       <div className="hidden sm:block absolute left-5 bottom-5 font-pixel text-[8px] text-sub leading-loose whitespace-pre-line">{t.home.hud}</div>
-      <CatCharacter heroRef={heroRef} stageRef={stageRef} />
+      <CatCharacter heroRef={heroRef} stageRef={stageRef} folders={[aboutRef, portfolioRef, contactRef]} />
       <canvas ref={confettiRef} className="absolute inset-0 pointer-events-none z-[70]" />
     </main>
   );

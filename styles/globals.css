@@ -45,3 +45,21 @@ a:hover { color: #C084FC; }
 
 /* Happy little hops (contact page, hovering a social link). */
 @keyframes khop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* Lucky the cat: sleep breathing, floating Zzz, petting hearts. */
+@keyframes catbreathe { 0%, 100% { transform: scale(3, 3); } 50% { transform: scale(3, 3.15); } }
+@keyframes zfloat {
+  0% { opacity: 0; transform: translate(0, 0); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translate(10px, -34px); }
+}
+@keyframes heartfloat {
+  0% { opacity: 0; transform: translateY(0) scale(0.6); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-46px) scale(1.1); }
+}
+/* CSS-drawn pixel heart (no emoji): rotated square + two round lobes. */
+.pixel-heart { position: relative; width: 9px; height: 9px; background: #EC4899; transform: rotate(45deg); }
+.pixel-heart::before, .pixel-heart::after { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #EC4899; }
+.pixel-heart::before { top: -5px; left: 0; }
+.pixel-heart::after { top: 0; left: -5px; }

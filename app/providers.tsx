@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { translations, Lang, Dict } from "@/lib/translations";
 import { trackLanguageChange, trackThemeChange } from "@/lib/analytics";
 
-type SfxKind = "hover" | "click" | "nav" | "type" | "fanfare" | "secret";
+type SfxKind = "hover" | "click" | "nav" | "type" | "fanfare" | "secret" | "purr";
 
 interface AppState {
   lang: Lang; setLang: (l: Lang) => void; t: Dict;
@@ -81,6 +81,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       else if (kind === "type") play(460 + Math.random() * 180, 0, 0.025, "square", 0.015);
       else if (kind === "fanfare") [523, 659, 784, 1047].forEach((f, i) => play(f, i * 0.09, 0.13));
       else if (kind === "secret") [392, 523, 659, 784, 1047, 1319].forEach((f, i) => play(f, i * 0.08, 0.15, "triangle", 0.07));
+      else if (kind === "purr") [90, 100, 90, 100, 90].forEach((f, i) => play(f, i * 0.13, 0.12, "triangle", 0.045));
     } catch {}
   }, []);
 

@@ -50,7 +50,7 @@ export default function AboutPage() {
   const { t } = useApp();
   const { typed } = useTypewriter(t.about.questText);
   return (
-    <PageShell>
+    <PageShell cat="sit">
       <div className="min-h-screen max-w-[1040px] mx-auto px-8 pt-32 sm:pt-24 pb-10 flex flex-col">
         <div className="my-auto flex flex-col gap-8">
         <div className="flex gap-2.5 flex-wrap">

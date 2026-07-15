@@ -22,7 +22,7 @@ export interface Translation {
   home: {
     title: string; subtitle: string; hud: string;
     aboutLabel: string; portfolioLabel: string; contactLabel: string;
-    catPrompt: string; catBubbles: string[];
+    catPrompt: string; catSecret: string; catBubbles: string[];
   };
   loading: { label: string; skip: string };
   nav: {
@@ -116,6 +116,7 @@ export const translations: Record<Lang, Translation> = {
       portfolioLabel: "Portfolio",
       contactLabel: "Contact Me",
       catPrompt: "PSST... CLICK ME! I'LL TELL YOU KARIMA'S SECRETS!",
+      catSecret: "STILL THERE? OK, A REAL SECRET: KARIMA TALKS TO ME ABOUT HER EXPLOITS BEFORE ANYONE ELSE.",
       catBubbles: [
         "HI! I'M LUCKY. I LOVE COOKING AND TAKING CARE OF KARIMA!",
         "MEOW! KARIMA LOVES PAINTING, GUITAR, VOLUNTEERING, AND COOKING!",
@@ -317,6 +318,7 @@ export const translations: Record<Lang, Translation> = {
       portfolioLabel: "Portfolio",
       contactLabel: "Contact",
       catPrompt: "PSST... CLIQUE SUR MOI! JE TE DIRAI LES SECRETS DE KARIMA!",
+      catSecret: "TOUJOURS LÀ? OK, UN VRAI SECRET: KARIMA ME PARLE DE SES EXPLOITS AVANT TOUT LE MONDE.",
       catBubbles: [
         "SALUT! MOI C'EST LUCKY. J'ADORE CUISINER ET PRENDRE SOIN DE KARIMA!",
         "MIAOU! KARIMA AIME LA PEINTURE, LA GUITARE, LE BÉNÉVOLAT ET LA CUISINE!",

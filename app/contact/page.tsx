@@ -45,7 +45,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <PageShell>
+    <PageShell cat="play">
       <div className="min-h-screen flex flex-col items-center justify-center gap-6 px-6 pt-32 sm:pt-24 pb-12">
         <h1 className="font-pixel text-[clamp(14px,2.4vw,22px)] tracking-[4px] text-center m-0">{t.contact.title}</h1>
 
@@ -62,7 +62,6 @@ export default function ContactPage() {
           <div className="w-52 h-52 flex items-end justify-center" style={{ animation: happy ? "khop 0.5s ease-in-out infinite" : "none" }}>
             <Character anim={anim} dir={2} scale={1.55} />
           </div>
-          <div className="w-52 h-2.5 bg-dot rounded-full mt-0.5" />
         </div>
 
         {/* Socials - single centered row (wraps 4+3 on small screens) */}

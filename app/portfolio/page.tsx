@@ -17,7 +17,7 @@ const ROW_META: Array<{ key: "projects" | "internships" | "ctf" | "hackathons" |
 export default function QuestLog() {
   const { t, sfx } = useApp();
   return (
-    <PageShell>
+    <PageShell cat="sleep">
       <div className="max-w-[760px] mx-auto px-8 pt-36 sm:pt-28 pb-16 flex flex-col gap-8">
         <div className="flex items-end justify-between gap-4">
           <div>
