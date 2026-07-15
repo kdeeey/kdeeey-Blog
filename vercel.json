@@ -4,6 +4,21 @@
       "source": "/d",
       "destination": "/?utm_source=discord&utm_medium=bio&utm_campaign=profile_link",
       "permanent": false
+    },
+    {
+      "source": "/ig",
+      "destination": "/?utm_source=instagram&utm_medium=bio&utm_campaign=profile_link",
+      "permanent": false
+    },
+    {
+      "source": "/gh",
+      "destination": "/?utm_source=github&utm_medium=profile&utm_campaign=profile_link",
+      "permanent": false
+    },
+    {
+      "source": "/li",
+      "destination": "/?utm_source=linkedin&utm_medium=profile&utm_campaign=profile_link",
+      "permanent": false
     }
   ]
 }
