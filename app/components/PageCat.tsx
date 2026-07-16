@@ -40,23 +40,29 @@ export default function PageCat({ mode }: { mode: PageCatMode }) {
 
   // Wandering: pick a new spot along the bottom every so often.
   // The first placement is instant (moveMs 0) so she doesn't slide across
-  // the screen when the page opens; later moves are real walks.
+  // the screen when the page opens; later moves are real walks at a steady
+  // pace (duration proportional to distance), legs animating the whole way.
+  const xRef = useRef(24);
   useEffect(() => {
     if (mode !== "wander") return;
+    const start = Math.max(16, window.innerWidth - 130);
+    xRef.current = start;
     setMoveMs(0);
-    setX(Math.max(16, window.innerWidth - 130));
+    setX(start);
+    let stopWalk: ReturnType<typeof setTimeout> | null = null;
     const id = setInterval(() => {
-      setX((prev) => {
-        const nx = 16 + Math.random() * Math.max(60, window.innerWidth - 150);
-        const ms = Math.max(700, Math.abs(nx - prev) * 12);
-        setFace(nx < prev ? -1 : 1);
-        setMoveMs(ms);
-        setWalking(true);
-        setTimeout(() => setWalking(false), ms);
-        return nx;
-      });
+      const prev = xRef.current;
+      const nx = 16 + Math.random() * Math.max(60, window.innerWidth - 150);
+      const ms = Math.max(900, Math.abs(nx - prev) * 14);
+      xRef.current = nx;
+      setFace(nx < prev ? -1 : 1);
+      setMoveMs(ms);
+      setWalking(true);
+      setX(nx);
+      if (stopWalk) clearTimeout(stopWalk);
+      stopWalk = setTimeout(() => setWalking(false), ms);
     }, 9000 + Math.random() * 5000);
-    return () => clearInterval(id);
+    return () => { clearInterval(id); if (stopWalk) clearTimeout(stopWalk); };
   }, [mode]);
 
   // Sitting/playing: periodic happy hops (rare when sitting, frequent when playing).
