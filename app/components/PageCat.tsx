@@ -90,7 +90,7 @@ export default function PageCat({ mode }: { mode: PageCatMode }) {
 
   const asleep = mode === "sleep" && !awake;
   const sheet = walking ? "/images/cat_walk.png" : asleep ? "/images/cat_sleep.png" : "/images/cat_sit.png";
-  const anim = walking ? "cat-walk 0.5s steps(4) infinite" : asleep ? "catbreathe 1.8s ease-in-out infinite" : "cat-sit 1.2s steps(2) infinite";
+  const anim = walking ? "cat-walk 0.4s steps(4) infinite" : asleep ? "catbreathe 1.8s ease-in-out infinite" : "cat-sit 1.2s steps(2) infinite";
 
   return (
     <div
