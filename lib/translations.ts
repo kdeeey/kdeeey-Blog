@@ -69,7 +69,7 @@ export interface Translation {
   };
   ctf: {
     title: string; online: string; local: string;
-    inpt: CtfEntry; ensi: CtfEntry; htb: CtfEntry;
+    inpt: CtfEntry; ensi: CtfEntry; cyberApocalypse: CtfEntry; htb: CtfEntry;
   };
   hackathons: {
     title: string; sub: string;
@@ -175,7 +175,7 @@ export const translations: Record<Lang, Translation> = {
       rows: {
         projects: { pre: "CRAFTED ITEMS", cat: "PROJECTS", sub: "4 ITEMS FORGED" },
         internships: { pre: "SIDE QUESTS", cat: "INTERNSHIPS", sub: "2 QUESTS · SUMMER 2026" },
-        ctf: { pre: "COMPETITIVE MODE", cat: "CTF", sub: "3 QUESTS COMPLETED" },
+        ctf: { pre: "COMPETITIVE MODE", cat: "CTF", sub: "4 QUESTS COMPLETED" },
         hackathons: { pre: "BOSS BATTLES", cat: "HACKATHONS", sub: "3 BATTLES FOUGHT" },
         certificates: { pre: "ACHIEVEMENTS UNLOCKED", cat: "CERTIFICATES", sub: "1 UNLOCKED · 1 IN PREPARATION" },
         htb: { pre: "TRAINING GROUNDS", cat: "LABS", sub: "WRITEUPS COMING SOON" },
@@ -245,6 +245,12 @@ export const translations: Record<Lang, Translation> = {
         title: "ENSI CTF", xp: "+250 XP",
         desc: "Beginner and intermediate cybersecurity challenges, solved in a competitive team environment.",
         tags: ["TEAM PLAY", "MIXED CHALLENGES"],
+      },
+      cyberApocalypse: {
+        title: "CYBER APOCALYPSE 2026",
+        xp: "+69,425 XP",
+        desc: "Epic lore-driven CTF by Hack The Box. War of infrastructure, logic, and counterfeit governance. 36/136 flags captured with team 0xUEMF.",
+        tags: ["WEB", "CRYPTO", "REV", "FORENSICS", "OSINT", "AI"],
       },
       htb: {
         title: "HACK THE BOX", xp: "+500 XP",
@@ -377,7 +383,7 @@ export const translations: Record<Lang, Translation> = {
       rows: {
         projects: { pre: "OBJETS FABRIQUÉS", cat: "PROJETS", sub: "4 OBJETS FORGÉS" },
         internships: { pre: "QUÊTES ANNEXES", cat: "STAGES", sub: "2 QUÊTES · ÉTÉ 2026" },
-        ctf: { pre: "MODE COMPÉTITIF", cat: "CTF", sub: "3 QUÊTES TERMINÉES" },
+        ctf: { pre: "MODE COMPÉTITIF", cat: "CTF", sub: "4 QUÊTES TERMINÉES" },
         hackathons: { pre: "COMBATS DE BOSS", cat: "HACKATHONS", sub: "3 COMBATS MENÉS" },
         certificates: { pre: "SUCCÈS DÉBLOQUÉS", cat: "CERTIFICATS", sub: "1 DÉBLOQUÉ · 1 EN PRÉPARATION" },
         htb: { pre: "TERRAINS D'ENTRAÎNEMENT", cat: "LABS", sub: "WRITEUPS BIENTÔT" },
@@ -447,6 +453,12 @@ export const translations: Record<Lang, Translation> = {
         title: "ENSI CTF", xp: "+250 XP",
         desc: "Défis cybersécurité débutant et intermédiaire, résolus en équipe compétitive.",
         tags: ["JEU D'ÉQUIPE", "DÉFIS MIXTES"],
+      },
+      cyberApocalypse: {
+        title: "CYBER APOCALYPSE 2026",
+        xp: "+69 425 XP",
+        desc: "CTF épique à lore par Hack The Box. Guerre d'infrastructure, de logique et de gouvernance contrefaite. 36/136 flags capturés avec l'équipe 0xUEMF.",
+        tags: ["WEB", "CRYPTO", "REV", "FORENSIQUE", "OSINT", "IA"],
       },
       htb: {
         title: "HACK THE BOX", xp: "+500 XP",
