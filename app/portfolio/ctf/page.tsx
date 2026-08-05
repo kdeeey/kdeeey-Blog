@@ -31,6 +31,11 @@ export default function CtfPage() {
       badgeColor: "#9FEF00",
       image: "/cyber-apocalypse-2026-cert.png",
       imageContain: true,
+      isEpic: true,
+      performance: t.ctf.cyberApocalypse.performance,
+      categories: t.ctf.cyberApocalypse.categories,
+      extendedDesc: t.ctf.cyberApocalypse.extendedDesc,
+      highlights: t.ctf.cyberApocalypse.highlights,
     },
     {
       ...t.ctf.htb,

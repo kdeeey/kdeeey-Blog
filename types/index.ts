@@ -6,6 +6,11 @@ export interface ProjectItem { title: string; desc: string; tags: string[]; repo
 export interface CtfItem {
   title: string; xp: string; status: "completed" | "inProgress"; desc: string; tags: string[];
   badgeBg: string; badgeColor: string; image?: string; imageContain?: boolean;
+  isEpic?: boolean;
+  performance?: { rank: string; solved: string; score: string; team: string; };
+  categories?: string[];
+  extendedDesc?: string;
+  highlights?: string[];
 }
 export interface HackathonItem { badge: string; title: string; date: string; desc: string; quote?: string; team?: string; organizer?: string; tags: string[]; image?: string; gallery?: string[]; }
 export interface CertItem { title: string; issuer: string; status: "completed" | "inPrep" | "locked"; tags: string[]; image?: string; }

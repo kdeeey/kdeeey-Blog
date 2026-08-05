@@ -9,7 +9,13 @@ interface PortfolioRow { pre: string; cat: string; sub: string }
 
 interface ProjectItem { title: string; desc: string; tags: string[] }
 
-interface CtfEntry { title: string; xp: string; desc: string; tags: string[] }
+interface CtfEntry {
+  title: string; xp: string; desc: string; tags: string[];
+  performance?: { rank: string; solved: string; score: string; team: string; };
+  categories?: string[];
+  extendedDesc?: string;
+  highlights?: string[];
+}
 
 interface HackathonEntry {
   badge: string; title: string; date: string; desc: string;
@@ -251,6 +257,24 @@ export const translations: Record<Lang, Translation> = {
         xp: "+69,425 XP",
         desc: "Epic lore-driven CTF by Hack The Box. War of infrastructure, logic, and counterfeit governance. 36/136 flags captured with team 0xUEMF.",
         tags: ["WEB", "CRYPTO", "REV", "FORENSICS", "OSINT", "AI"],
+        performance: {
+          rank: "GLOBAL RANK: #66",
+          solved: "FLAGS SOLVED: 36/136",
+          score: "EVENT SCORE: 69,425",
+          team: "TEAM: 0xUEMF"
+        },
+        categories: [
+          "Web", "AI / ML", "Cloud", "Cryptography", "Forensics", 
+          "Reverse Engineering", "Pwn", "ICS", "Mobile", "Blockchain", 
+          "Secure Coding", "Quantum", "Hardware", "OSINT"
+        ],
+        extendedDesc: "Competed across a wide range of offensive security domains, solving challenges involving modern web exploitation, binary analysis, cryptography, AI/ML security, industrial control systems, cloud security, hardware, and digital forensics while collaborating with Team 0xUEMF.",
+        highlights: [
+          "Ranked #66 worldwide",
+          "Solved 36 challenges",
+          "Competed in 14 cybersecurity categories",
+          "Team: 0xUEMF"
+        ]
       },
       htb: {
         title: "HACK THE BOX", xp: "+500 XP",
@@ -459,6 +483,24 @@ export const translations: Record<Lang, Translation> = {
         xp: "+69 425 XP",
         desc: "CTF épique à lore par Hack The Box. Guerre d'infrastructure, de logique et de gouvernance contrefaite. 36/136 flags capturés avec l'équipe 0xUEMF.",
         tags: ["WEB", "CRYPTO", "REV", "FORENSIQUE", "OSINT", "IA"],
+        performance: {
+          rank: "RANG MONDIAL: #66",
+          solved: "FLAGS RÉSOLUS: 36/136",
+          score: "SCORE TOTAL: 69 425",
+          team: "ÉQUIPE: 0xUEMF"
+        },
+        categories: [
+          "Web", "IA / ML", "Cloud", "Cryptographie", "Forensique", 
+          "Rétro-ingénierie", "Pwn", "ICS", "Mobile", "Blockchain", 
+          "Code Sécurisé", "Quantique", "Hardware", "OSINT"
+        ],
+        extendedDesc: "Compétition dans un large éventail de domaines de sécurité offensive, résolution de défis impliquant l'exploitation web moderne, l'analyse binaire, la cryptographie, la sécurité IA/ML, les systèmes de contrôle industriel, la sécurité cloud, le hardware et la forensique numérique, en collaboration avec l'équipe 0xUEMF.",
+        highlights: [
+          "Classée #66 mondiale",
+          "36 défis résolus",
+          "Participation dans 14 catégories de cybersécurité",
+          "Équipe : 0xUEMF"
+        ]
       },
       htb: {
         title: "HACK THE BOX", xp: "+500 XP",
