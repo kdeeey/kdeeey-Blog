@@ -12,7 +12,7 @@ export default function LabsPage() {
   const [tab, setTab] = useState<LabTab>("htb");
   const tabs: LabTab[] = ["htb", "cpts", "other"];
 
-  const labsData: Record<LabTab, Array<{ machine: string; difficulty: string; tags: string[]; writeup?: string; description?: string }>> = {
+  const labsData: Record<LabTab, Array<{ machine: string; difficulty: string; tags: string[]; writeup?: string; description?: string; image?: string }>> = {
     htb: [
       {
         machine: "Reactor",
