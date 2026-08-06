@@ -109,20 +109,6 @@ export default function CtfCard({ item }: { item: CtfItem }) {
               </div>
             )}
 
-            {/* Highlights Section */}
-            {item.highlights && (
-              <div className="flex flex-col gap-3">
-                <div className="font-pixel text-[11px] text-ink">Highlights</div>
-                <ul className="list-none p-0 m-0 flex flex-col gap-2.5">
-                  {item.highlights.map((hi, i) => (
-                    <li key={i} className="font-body text-[14px] text-sub flex items-start gap-3">
-                      <span className="text-ink font-pixel text-[8px] mt-[5px]">{'>'}</span>
-                      {hi}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         </div>
       </>

@@ -259,7 +259,7 @@ export const translations: Record<Lang, Translation> = {
         tags: ["WEB", "CRYPTO", "REV", "FORENSICS", "OSINT", "AI"],
         performance: {
           rank: "GLOBAL RANK: #66",
-          solved: "FLAGS SOLVED: 36/136",
+          solved: "FLAGS SOLVED: 136/136",
           score: "EVENT SCORE: 69,425",
           team: "TEAM: 0xUEMF"
         },
@@ -485,7 +485,7 @@ export const translations: Record<Lang, Translation> = {
         tags: ["WEB", "CRYPTO", "REV", "FORENSIQUE", "OSINT", "IA"],
         performance: {
           rank: "RANG MONDIAL: #66",
-          solved: "FLAGS RÉSOLUS: 36/136",
+          solved: "FLAGS RÉSOLUS: 136/136",
           score: "SCORE TOTAL: 69 425",
           team: "ÉQUIPE: 0xUEMF"
         },
