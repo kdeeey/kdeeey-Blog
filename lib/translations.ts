@@ -55,10 +55,10 @@ export interface Translation {
   };
   projects: {
     title: string; teamProject: string;
-    categories: { web: string; malware: string; ai: string };
+    categories: { academic: string; hackathon: string; internship: string };
     items: {
       nood: ProjectItem; malware: ProjectItem;
-      campusops: ProjectItem; satellite: ProjectItem;
+      campusops: ProjectItem; satellite: ProjectItem; dgi: ProjectItem;
     };
   };
   internships: {
@@ -70,7 +70,7 @@ export interface Translation {
     };
     dgi: {
       title: string; role: string; desc: string; tags: string[];
-      tax: { title: string };
+      procurement: { title: string; desc: string };
     };
   };
   ctf: {
@@ -98,15 +98,16 @@ export interface Translation {
       default: string[];
       linkedin: string; github: string; tryhackme: string;
       mail: string; x: string; discord: string;
-      ctftime: string; medium: string; spotify: string; seeYou: string;
+      ctftime: string; medium: string; spotify: string;
+      hackthebox: string; seeYou: string;
     };
   };
   common: {
-    back: string; backPortfolio: string; viewRepo: string;
+    back: string; backPortfolio: string; viewRepo: string; viewProject: string;
     writeupSoon: string; githubSoon: string;
     completed: string; upcoming: string; inProgress: string;
     inPrep: string; participated: string;
-    noImage: string; comingSoon: string;
+    noImage: string;
   };
 }
 
@@ -179,7 +180,7 @@ export const translations: Record<Lang, Translation> = {
       questLog: "QUEST LOG",
       selectCategory: "SELECT A CATEGORY",
       rows: {
-        projects: { pre: "CRAFTED ITEMS", cat: "PROJECTS", sub: "4 ITEMS FORGED" },
+        projects: { pre: "CRAFTED ITEMS", cat: "PROJECTS", sub: "5 ITEMS FORGED" },
         internships: { pre: "SIDE QUESTS", cat: "INTERNSHIPS", sub: "2 QUESTS · SUMMER 2026" },
         ctf: { pre: "COMPETITIVE MODE", cat: "CTF", sub: "4 QUESTS COMPLETED" },
         hackathons: { pre: "BOSS BATTLES", cat: "HACKATHONS", sub: "3 BATTLES FOUGHT" },
@@ -190,7 +191,7 @@ export const translations: Record<Lang, Translation> = {
     projects: {
       title: "CRAFTED ITEMS · PROJECTS",
       teamProject: "TEAM PROJECT",
-      categories: { web: "WEB SECURITY", malware: "MALWARE ANALYSIS", ai: "AI & MACHINE LEARNING" },
+      categories: { academic: "ACADEMIC PROJECTS", hackathon: "HACKATHON PROJECTS", internship: "INTERNSHIP PROJECTS" },
       items: {
         nood: {
           title: "NOOD · AI COMMUNICATION COACH",
@@ -211,6 +212,11 @@ export const translations: Record<Lang, Translation> = {
           title: "SATELLITE PROTECTION (ASTRAEA)",
           desc: "AI-based cyberattack detection system for satellites using Isolation Forest and LSTM models.",
           tags: ["Python", "Machine Learning", "fork · team"],
+        },
+        dgi: {
+          title: "PUBLIC PROCUREMENT ANALYSIS & ANOMALY DETECTION",
+          desc: "Detecting unusual patterns in Moroccan public procurement data with a PySpark pipeline, Isolation Forest and SHAP.",
+          tags: ["Python", "PySpark", "Machine Learning"],
         },
       },
     },
@@ -233,9 +239,12 @@ export const translations: Record<Lang, Translation> = {
       dgi: {
         title: "DGI RABAT",
         role: "AI & Cybersecurity Engineering Intern · August 2026",
-        desc: "General Directorate of Taxes (DGI) — Predicting tax audit risk and estimating tax fraud amounts using deep learning.",
-        tags: ["Deep Learning", "Python", "Data Analysis", "Fraud Detection"],
-        tax: { title: "TAX FRAUD · DEEP LEARNING" },
+        desc: "General Directorate of Taxes (DGI) — Automated extraction and analysis of public procurement data for fiscal risk detection.",
+        tags: ["Data Engineering", "PySpark", "OCR", "Machine Learning", "Explainable AI", "FastAPI", "Streamlit", "Python"],
+        procurement: {
+          title: "PUBLIC PROCUREMENT ANALYSIS & ANOMALY DETECTION",
+          desc: "Detecting unusual patterns in Moroccan public procurement data. Pipeline: scraping, PDF/OCR, PySpark, PostgreSQL, and anomaly detection with Isolation Forest + SHAP, served via FastAPI and Streamlit.",
+        },
       },
     },
     ctf: {
@@ -328,15 +337,16 @@ export const translations: Record<Lang, Translation> = {
         ],
         linkedin: "LET'S NETWORK!", github: "CHECK MY CODE!", tryhackme: "HACK TOGETHER?",
         mail: "SEND ME A MESSAGE!", x: "FOLLOW ME!", discord: "ADD ME AS KDEEEY!",
-        ctftime: "CAPTURE THE FLAG!", medium: "READ MY WRITEUPS!", spotify: "LISTEN WITH ME!", seeYou: "SEE YOU THERE!",
+        ctftime: "CAPTURE THE FLAG!", medium: "READ MY WRITEUPS!", spotify: "LISTEN WITH ME!",
+        hackthebox: "LET'S PLAY LABS AND LEARN CYBERSECURITY TOGETHER!", seeYou: "SEE YOU THERE!",
       },
     },
     common: {
-      back: "BACK", backPortfolio: "BACK TO PORTFOLIO", viewRepo: "VIEW REPO",
+      back: "BACK", backPortfolio: "BACK TO PORTFOLIO", viewRepo: "VIEW REPO", viewProject: "VIEW PROJECT",
       writeupSoon: "WRITEUP · SOON", githubSoon: "GITHUB · SOON",
       completed: "COMPLETED", upcoming: "UPCOMING", inProgress: "IN PROGRESS",
       inPrep: "IN PREPARATION", participated: "PARTICIPATED",
-      noImage: "NO IMAGE", comingSoon: "COMING SOON",
+      noImage: "NO IMAGE",
     },
   },
   fr: {
@@ -405,7 +415,7 @@ export const translations: Record<Lang, Translation> = {
       questLog: "JOURNAL DE QUÊTES",
       selectCategory: "SÉLECTIONNER UNE CATÉGORIE",
       rows: {
-        projects: { pre: "OBJETS FABRIQUÉS", cat: "PROJETS", sub: "4 OBJETS FORGÉS" },
+        projects: { pre: "OBJETS FABRIQUÉS", cat: "PROJETS", sub: "5 OBJETS FORGÉS" },
         internships: { pre: "QUÊTES ANNEXES", cat: "STAGES", sub: "2 QUÊTES · ÉTÉ 2026" },
         ctf: { pre: "MODE COMPÉTITIF", cat: "CTF", sub: "4 QUÊTES TERMINÉES" },
         hackathons: { pre: "COMBATS DE BOSS", cat: "HACKATHONS", sub: "3 COMBATS MENÉS" },
@@ -416,7 +426,7 @@ export const translations: Record<Lang, Translation> = {
     projects: {
       title: "OBJETS FABRIQUÉS · PROJETS",
       teamProject: "PROJET D'ÉQUIPE",
-      categories: { web: "SÉCURITÉ WEB", malware: "ANALYSE DE MALWARE", ai: "IA & MACHINE LEARNING" },
+      categories: { academic: "PROJETS ACADÉMIQUES", hackathon: "PROJETS HACKATHON", internship: "PROJETS DE STAGE" },
       items: {
         nood: {
           title: "NOOD · COACH IA EN COMMUNICATION",
@@ -437,6 +447,11 @@ export const translations: Record<Lang, Translation> = {
           title: "PROTECTION SATELLITE (ASTRAEA)",
           desc: "Système de détection de cyberattaques par IA pour satellites utilisant Isolation Forest et des modèles LSTM.",
           tags: ["Python", "Machine Learning", "fork · équipe"],
+        },
+        dgi: {
+          title: "ANALYSE DES MARCHÉS PUBLICS & DÉTECTION D'ANOMALIES",
+          desc: "Détection de schémas inhabituels dans les marchés publics marocains via un pipeline PySpark, Isolation Forest et SHAP.",
+          tags: ["Python", "PySpark", "Machine Learning"],
         },
       },
     },
@@ -459,9 +474,12 @@ export const translations: Record<Lang, Translation> = {
       dgi: {
         title: "DGI RABAT",
         role: "Stagiaire en Ingénierie IA & Cybersécurité · Août 2026",
-        desc: "Direction Générale des Impôts (DGI) — Prédiction du risque d'audit fiscal et estimation des montants de fraude fiscale par deep learning.",
-        tags: ["Deep Learning", "Python", "Analyse de Données", "Détection de Fraude"],
-        tax: { title: "FRAUDE FISCALE · DEEP LEARNING" },
+        desc: "Direction Générale des Impôts (DGI) — Extraction et analyse automatisées des données des marchés publics pour la détection du risque fiscal.",
+        tags: ["Ingénierie des Données", "PySpark", "OCR", "Machine Learning", "IA Explicable", "FastAPI", "Streamlit", "Python"],
+        procurement: {
+          title: "ANALYSE DES MARCHÉS PUBLICS & DÉTECTION D'ANOMALIES",
+          desc: "Détection de schémas inhabituels dans les données des marchés publics marocains. Pipeline : scraping, PDF/OCR, PySpark, PostgreSQL et détection d'anomalies par Isolation Forest + SHAP, exposé via FastAPI et Streamlit.",
+        },
       },
     },
     ctf: {
@@ -554,15 +572,16 @@ export const translations: Record<Lang, Translation> = {
         ],
         linkedin: "CRÉONS UN RÉSEAU!", github: "REGARDE MON CODE!", tryhackme: "HACKONS ENSEMBLE?",
         mail: "ENVOIE-MOI UN MESSAGE!", x: "SUIS-MOI!", discord: "Ajoute-moi en tant que kdeeey!",
-        ctftime: "CAPTURE LE DRAPEAU!", medium: "LIS MES WRITEUPS!", spotify: "ÉCOUTE AVEC MOI!", seeYou: "À BIENTÔT!",
+        ctftime: "CAPTURE LE DRAPEAU!", medium: "LIS MES WRITEUPS!", spotify: "ÉCOUTE AVEC MOI!",
+        hackthebox: "JOUONS AUX LABS ET APPRENONS LA CYBERSÉCURITÉ ENSEMBLE!", seeYou: "À BIENTÔT!",
       },
     },
     common: {
-      back: "RETOUR", backPortfolio: "RETOUR AU PORTFOLIO", viewRepo: "VOIR REPO",
+      back: "RETOUR", backPortfolio: "RETOUR AU PORTFOLIO", viewRepo: "VOIR REPO", viewProject: "VOIR LE PROJET",
       writeupSoon: "WRITEUP · BIENTÔT", githubSoon: "GITHUB · BIENTÔT",
       completed: "TERMINÉ", upcoming: "À VENIR", inProgress: "EN COURS",
       inPrep: "EN PRÉPARATION", participated: "PARTICIPÉ",
-      noImage: "PAS D'IMAGE", comingSoon: "BIENTÔT",
+      noImage: "PAS D'IMAGE",
     },
   },
 };
@@ -580,12 +599,16 @@ export const links = {
   ctftime: "https://ctftime.org/user/243517",
   medium: "https://medium.com/@karimaeddahhak",
   spotify: "https://open.spotify.com/user/31cmw5vqgkmownoe4xyqdnkinx4e?si=6b3b0488799841b2",
+  hackthebox: "https://app.hackthebox.com/public/users/2820064",
   repos: {
     nood: "https://github.com/kdeeey/NOOD-",
     malware: "https://github.com/kdeeey/malware-features-extraction",
     campusops: "https://github.com/kdeeey/CampusOps-",
     satellite: "https://github.com/kdeeey/satellite-protection",
     rag: "https://github.com/kdeeey/damn-vulnerable-rag",
-    dgi: "https://github.com/kdeeey/dgi-audit-risk-predicto",
+    dgi: "https://github.com/kdeeey/public-procurement-intelligence",
+  },
+  live: {
+    dgi: "https://public-procurement-intelligence.streamlit.app/",
   },
 } as const;

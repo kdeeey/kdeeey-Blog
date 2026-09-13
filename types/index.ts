@@ -2,7 +2,7 @@ export type Lang = "en" | "fr";
 export type Direction = 0 | 1 | 2 | 3; // 0 up, 1 left, 2 down, 3 right
 export type CharacterAnim = "idle" | "walk" | "slash";
 
-export interface ProjectItem { title: string; desc: string; tags: string[]; repo?: string; }
+export interface ProjectItem { title: string; desc: string; tags: string[]; repo?: string; live?: string; team?: boolean; }
 export interface CtfItem {
   title: string; xp: string; status: "completed" | "inProgress"; desc: string; tags: string[];
   badgeBg: string; badgeColor: string; image?: string; imageContain?: boolean;

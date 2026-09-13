@@ -36,6 +36,7 @@ export default function ContactPage() {
     { label: "in", title: "LinkedIn", href: links.linkedin, bg: "#0A66C2", msg: b.linkedin },
     { label: "GH", title: "GitHub", href: links.github, bg: "#111111", msg: b.github, icon: "/images/git-icon.png", invertIcon: true },
     { label: "THM", title: "TryHackMe", href: links.tryhackme, bg: "#EF4444", msg: b.tryhackme, fontSize: 8 },
+    { label: "HTB", title: "Hack The Box", href: links.hackthebox, bg: "#FFFFFF", msg: b.hackthebox, icon: "/images/HTB.png" },
     { label: "@", title: "Email", href: links.mail, bg: "#9333EA", msg: b.mail, fontSize: 13 },
     { label: "X", title: "X", href: links.x, bg: "#111111", msg: b.x },
     { label: "DC", title: "Discord", href: links.discord, bg: "#5865F2", msg: b.discord, icon: "/images/discord-icon.png" },
@@ -58,14 +59,14 @@ export default function ContactPage() {
 
         {/* Speech bubble above the character */}
         <div className="flex flex-col items-center">
-          <SpeechBubble text={msg ?? b.default[idleIdx % b.default.length]} className="z-[2]" />
+          <SpeechBubble text={msg ?? b.default[idleIdx % b.default.length]} className="z-[2]" wrap />
           <div className="w-52 h-52 flex items-end justify-center" style={{ animation: happy ? "khop 0.5s ease-in-out infinite" : "none" }}>
             <Character anim={anim} dir={2} scale={1.55} />
           </div>
         </div>
 
         {/* Socials - single centered row (wraps 4+3 on small screens) */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-[760px]">
+        <div className="flex flex-wrap justify-center gap-6 max-w-[800px]">
           {socials.map((s) => (
             <SocialIcon key={s.title} {...s} onEnter={() => enter(s.msg)} onLeave={leave} onActivate={activate} />
           ))}
