@@ -65,7 +65,6 @@ export default function AboutPage() {
             <div className="w-[220px] h-[220px] flex items-end justify-center">
               <Character anim="idle" scale={1.7} />
             </div>
-            <div className="w-[230px] h-2.5 bg-dot rounded-full mt-0.5" />
           </div>
           <div className="flex-[3_1_420px] min-w-[320px] bg-card border-[3px] border-ink shadow-pixelLg p-7 flex flex-col gap-5">
             <div>

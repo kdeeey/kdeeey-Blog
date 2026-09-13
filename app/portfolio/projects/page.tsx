@@ -13,6 +13,10 @@ function CategoryHeader({ label }: { label: string }) {
   );
 }
 
+function CardGrid({ children }: { children: React.ReactNode }) {
+  return <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 items-start">{children}</div>;
+}
+
 export default function ProjectsPage() {
   const { t } = useApp();
   const items = t.projects.items;
@@ -21,39 +25,44 @@ export default function ProjectsPage() {
     <SectionPage title={t.projects.title} wide>
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
-          <CategoryHeader label={cats.web} />
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-7">
+          <CategoryHeader label={cats.academic} />
+          <CardGrid>
             <ProjectCard
-              item={{ ...items.nood, tags: [...items.nood.tags], repo: links.repos.nood }}
-              image="/NOOD.jpeg"
-              imageAlt="NOOD"
-            />
-            <ProjectCard
-              item={{ ...items.campusops, tags: [...items.campusops.tags], repo: links.repos.campusops }}
+              item={{ ...items.campusops, tags: [...items.campusops.tags], repo: links.repos.campusops, team: true }}
               image="/compusops.jpeg"
               imageAlt="CampusOps"
             />
-          </div>
-        </div>
-        <div className="flex flex-col gap-5">
-          <CategoryHeader label={cats.malware} />
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-7">
             <ProjectCard
               item={{ ...items.malware, tags: [...items.malware.tags], repo: links.repos.malware }}
               image="/malware-icon-1024x569.jpg"
               imageAlt="Malware Features Extraction"
             />
-          </div>
+          </CardGrid>
         </div>
         <div className="flex flex-col gap-5">
-          <CategoryHeader label={cats.ai} />
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-7">
+          <CategoryHeader label={cats.hackathon} />
+          <CardGrid>
             <ProjectCard
-              item={{ ...items.satellite, tags: [...items.satellite.tags], repo: links.repos.satellite }}
+              item={{ ...items.nood, tags: [...items.nood.tags], repo: links.repos.nood, team: true }}
+              image="/NOOD.jpeg"
+              imageAlt="NOOD"
+            />
+            <ProjectCard
+              item={{ ...items.satellite, tags: [...items.satellite.tags], repo: links.repos.satellite, team: true }}
               image="/satelite.png"
               imageAlt="Satellite Protection"
             />
-          </div>
+          </CardGrid>
+        </div>
+        <div className="flex flex-col gap-5">
+          <CategoryHeader label={cats.internship} />
+          <CardGrid>
+            <ProjectCard
+              item={{ ...items.dgi, tags: [...items.dgi.tags], repo: links.repos.dgi, live: links.live.dgi, team: true }}
+              images={["/images/DGI_pipline.jpeg", "/images/general_view_dgi.jpeg"]}
+              imageAlt="Public Procurement Analysis"
+            />
+          </CardGrid>
         </div>
       </div>
     </SectionPage>

@@ -13,6 +13,7 @@ export default function InternshipsPage() {
         <InternshipCard
           logo="/images/1337.png" logoDark
           title={m.m1337.title} role={m.m1337.role} desc={m.m1337.desc} tags={[...m.m1337.tags]}
+          photo="/images/AD_lab.png"
           status="completed" footer={m.handsOnLab}
           projects={[
             { title: m.m1337.adLab.title, writeup: "/Kerberoasting writeup.pdf", writeupLabel: m.m1337.adLab.writeup },
@@ -22,8 +23,15 @@ export default function InternshipsPage() {
         <InternshipCard
           logo="/images/DGI.png"
           title={m.dgi.title} role={m.dgi.role} desc={m.dgi.desc} tags={[...m.dgi.tags]}
-          status="upcoming"
-          projects={[{ title: m.dgi.tax.title, repo: links.repos.dgi, writeupSoon: true }]}
+          status="completed"
+          projects={[{
+            title: m.dgi.procurement.title,
+            desc: m.dgi.procurement.desc,
+            image: "/images/DGI_pipline.jpeg",
+            gallery: ["/images/general_view_dgi.jpeg"],
+            repo: links.repos.dgi,
+            live: links.live.dgi,
+          }]}
         />
       </div>
     </SectionPage>

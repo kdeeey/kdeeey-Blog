@@ -1,35 +1,56 @@
 "use client";
 import { useRef, useState } from "react";
+import Lightbox from "./Lightbox";
 
 // Instagram-style swipe carousel: drag/swipe (pointer events cover touch + mouse),
 // hover arrows on desktop, clickable dots, arrow-key support.
+// A tap that isn't a swipe opens the current image full-screen.
 export default function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
   const dragging = useRef(false);
+  const pressed = useRef(false);
+  const moved = useRef(false);
   const startX = useRef(0);
 
   const go = (i: number) => setIndex(Math.max(0, Math.min(images.length - 1, i)));
 
   const onPointerDown = (e: React.PointerEvent) => {
+    pressed.current = true;
+    moved.current = false;
+    startX.current = e.clientX;
     if (images.length < 2) return;
     dragging.current = true;
-    startX.current = e.clientX;
     e.currentTarget.setPointerCapture(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent) => {
+    if (!pressed.current) return;
+    if (Math.abs(e.clientX - startX.current) > 6) moved.current = true;
     if (dragging.current) setDragX(e.clientX - startX.current);
   };
   const endDrag = () => {
+    const tapped = pressed.current && !moved.current;
+    pressed.current = false;
+    if (dragging.current) {
+      dragging.current = false;
+      if (Math.abs(dragX) > 50) go(index + (dragX < 0 ? 1 : -1));
+      setDragX(0);
+    }
+    if (tapped) setZoomed(true);
+  };
+  const cancelDrag = () => {
+    pressed.current = false;
     if (!dragging.current) return;
     dragging.current = false;
-    if (Math.abs(dragX) > 50) go(index + (dragX < 0 ? 1 : -1));
     setDragX(0);
   };
 
   return (
+    <>
+    {zoomed && <Lightbox src={images[index]} alt={alt} onClose={() => setZoomed(false)} />}
     <div
-      className="relative w-full h-full overflow-hidden select-none group/carousel outline-none"
+      className="relative w-full h-full overflow-hidden select-none group/carousel outline-none cursor-zoom-in"
       style={{ touchAction: "pan-y" }}
       tabIndex={0}
       role="group"
@@ -37,10 +58,11 @@ export default function ImageCarousel({ images, alt }: { images: string[]; alt: 
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
-      onPointerCancel={endDrag}
+      onPointerCancel={cancelDrag}
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft") { e.stopPropagation(); go(index - 1); }
         if (e.key === "ArrowRight") { e.stopPropagation(); go(index + 1); }
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); setZoomed(true); }
       }}
     >
       <div
@@ -97,5 +119,6 @@ export default function ImageCarousel({ images, alt }: { images: string[]; alt: 
         </>
       )}
     </div>
+    </>
   );
 }
