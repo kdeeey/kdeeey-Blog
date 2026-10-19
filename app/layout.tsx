@@ -10,6 +10,7 @@ const pixel = Press_Start_2P({ weight: "400", subsets: ["latin"], variable: "--f
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kdeeey-blog.vercel.app"),
   title: "Karima Ed Dahhak · Pixel RPG Portfolio",
   description: "First-year cybersecurity student. Retro pixel-art RPG portfolio: projects, CTFs, hackathons, internships.",
 };
