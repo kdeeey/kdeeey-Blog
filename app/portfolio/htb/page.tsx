@@ -36,8 +36,8 @@ const CTF_WRITEUPS: CtfWriteup[] = [
 
 export default function LabsPage() {
   const { t } = useApp();
-  const [tab, setTab] = useState<LabTab>("htb");
-  const tabs: LabTab[] = ["htb", "cpts", "ctf", "other"];
+  const [tab, setTab] = useState<LabTab>("ctf");
+  const tabs: LabTab[] = ["ctf", "htb", "cpts", "other"];
 
   const labsData: Record<LabTab, Array<{ machine: string; difficulty: string; tags: string[]; writeup?: string; description?: string; image?: string }>> = {
     htb: [
