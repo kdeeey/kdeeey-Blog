@@ -89,7 +89,8 @@ export interface Translation {
   htb: {
     title: string; sub: string; machine: string;
     difficulty: string; viewWriteup: string; locked: string;
-    tabs: { htb: string; cpts: string; other: string };
+    challenge: string; solved: string;
+    tabs: { htb: string; cpts: string; ctf: string; other: string };
     otherDesc: string;
   };
   contact: {
@@ -323,7 +324,8 @@ export const translations: Record<Lang, Translation> = {
     htb: {
       title: "TRAINING GROUNDS · LABS", sub: "PRACTICE MAKES PERFECT",
       machine: "MACHINE", difficulty: "DIFFICULTY", viewWriteup: "VIEW WRITEUP", locked: "???",
-      tabs: { htb: "HTB LABS", cpts: "CPTS LABS", other: "OTHER LABS" },
+      challenge: "CHALLENGE", solved: "SOLVED",
+      tabs: { htb: "HTB LABS", cpts: "CPTS LABS", ctf: "CTF WRITEUPS", other: "OTHER LABS" },
       otherDesc: "TryHackMe, VulnHub and more — coming soon.",
     },
     contact: {
@@ -558,7 +560,8 @@ export const translations: Record<Lang, Translation> = {
     htb: {
       title: "TERRAINS D'ENTRAÎNEMENT · LABS", sub: "LA PRATIQUE REND PARFAIT",
       machine: "MACHINE", difficulty: "DIFFICULTÉ", viewWriteup: "VOIR WRITEUP", locked: "???",
-      tabs: { htb: "LABS HTB", cpts: "LABS CPTS", other: "AUTRES LABS" },
+      challenge: "CHALLENGE", solved: "RÉSOLU",
+      tabs: { htb: "LABS HTB", cpts: "LABS CPTS", ctf: "WRITEUPS CTF", other: "AUTRES LABS" },
       otherDesc: "TryHackMe, VulnHub et plus — bientôt.",
     },
     contact: {

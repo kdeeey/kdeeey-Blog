@@ -3,14 +3,41 @@ import { useState } from "react";
 import { useApp } from "../../providers";
 import SectionPage from "../../components/SectionPage";
 import HtbLabCard from "../../components/HtbLabCard";
+import CtfWriteupCard from "../../components/CtfWriteupCard";
 import PixelButton from "../../components/PixelButton";
+import type { CtfWriteup } from "@/types";
 
-type LabTab = "htb" | "cpts" | "other";
+type LabTab = "htb" | "cpts" | "ctf" | "other";
+
+const CTF_WRITEUPS: CtfWriteup[] = [
+  {
+    challenge: "DumPwn",
+    event: "Securinets CTF Quals 2026",
+    category: "Forensics",
+    color: "#3B82F6",
+    points: "338 PTS",
+    tags: ["Memory Dump", "File Repair", "Windows", "XOR"],
+    writeup: "https://app.notion.com/p/DumPwn-3fd0633671538017aa41d6a0d3722601?source=copy_link",
+    description: "A 2 GB memory dump, deliberately corrupted so no tool could read it. Repaired it byte by byte, caught a process wearing a fake Windows name, and broke the XOR key hiding the real flag, while ten decoys sat in plaintext waiting for someone to grep.",
+    image: "/images/DumPwn.png",
+  },
+  {
+    challenge: "Backdrop",
+    event: "Securinets CTF Quals 2026",
+    category: "Mobile",
+    color: "#C084FC",
+    points: "358 PTS",
+    tags: ["Flutter", "APK", "Reversing", "Crypto"],
+    writeup: "https://app.notion.com/p/Backdrop-3fd0633671538014968fc932ad5045b1?source=copy_link",
+    description: "A Flutter app that begs you to brute-force a 6-digit code that does nothing. The real flag was an image locked under three layers of crypto, the first keyed to the APK's own signature so no patched build could ever open it. Reversed it statically and rebuilt all three without ever installing the app.",
+    image: "/images/Backdrop.jpeg",
+  },
+];
 
 export default function LabsPage() {
   const { t } = useApp();
   const [tab, setTab] = useState<LabTab>("htb");
-  const tabs: LabTab[] = ["htb", "cpts", "other"];
+  const tabs: LabTab[] = ["htb", "cpts", "ctf", "other"];
 
   const labsData: Record<LabTab, Array<{ machine: string; difficulty: string; tags: string[]; writeup?: string; description?: string; image?: string }>> = {
     htb: [
@@ -32,6 +59,7 @@ export default function LabsPage() {
         description: "Exploited a Path Traversal vulnerability in the WordPress Simple Backup Plugin (CVE-2021) to read arbitrary files without authentication. Used Nmap for enumeration and both manual and automated techniques to retrieve the flag."
       }
     ],
+    ctf: [],
     other: []
   };
 
@@ -45,7 +73,13 @@ export default function LabsPage() {
             </PixelButton>
           ))}
         </div>
-        {labsData[tab].length > 0 && tab !== "other" ? (
+        {tab === "ctf" ? (
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6">
+            {CTF_WRITEUPS.map((w) => (
+              <CtfWriteupCard key={w.challenge} w={w} />
+            ))}
+          </div>
+        ) : labsData[tab].length > 0 && tab !== "other" ? (
           <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6">
             {labsData[tab].map((lab, index) => (
               <HtbLabCard key={index} lab={lab} />

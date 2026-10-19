@@ -40,6 +40,7 @@ export const trackCvDownload = (): void => trackEvent("cv_download");
 export const trackProjectOpen = (project_name: string): void => trackEvent("project_open", { project_name });
 export const trackCertificateOpen = (certificate_name: string): void => trackEvent("certificate_open", { certificate_name });
 export const trackHtbLabOpen = (lab_name: string): void => trackEvent("htb_lab_open", { lab_name });
+export const trackCtfWriteupOpen = (challenge_name: string): void => trackEvent("ctf_writeup_open", { challenge_name });
 export const trackLanguageChange = (language: string): void => trackEvent("language_change", { language });
 export const trackThemeChange = (theme: string): void => trackEvent("theme_change", { theme });
 export const trackIntroSkip = (): void => trackEvent("intro_skip");

@@ -15,3 +15,4 @@ export interface CtfItem {
 export interface HackathonItem { badge: string; title: string; date: string; desc: string; quote?: string; team?: string; organizer?: string; tags: string[]; image?: string; gallery?: string[]; }
 export interface CertItem { title: string; issuer: string; status: "completed" | "inPrep" | "locked"; tags: string[]; image?: string; }
 export interface HtbLab { machine: string; difficulty: string; tags: string[]; writeup?: string; description?: string; image?: string; }
+export interface CtfWriteup { challenge: string; event: string; category: string; color: string; points: string; tags: string[]; writeup: string; description: string; image: string; }
