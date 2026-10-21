@@ -1,0 +1,99 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,top=1.0cm,bottom=1.0cm,left=1.4cm,right=1.4cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{navy}{RGB}{36,62,99}
+\definecolor{linkblue}{RGB}{70,100,150}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}{\large\color{navy}}{}{0em}{}[\vspace{-0.75em}\color{navy}\rule{\linewidth}{0.5pt}]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+\setlist[itemize]{leftmargin=1.2em,topsep=1pt,itemsep=0pt,parsep=0pt}
+
+% \entry{Title}{Right}{Subtitle}
+\newcommand{\entry}[3]{\textbf{#1}\hfill\textit{\small #2}\\#3\par}
+\newcommand{\lnk}[2]{\href{#1}{\color{linkblue}#2}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\color{navy} KARIMA ED DAHHAK}\\[3pt]
+  \small
+  \faPhone\ +212 771 493 177 \quad|\quad
+  \faEnvelope\ \lnk{mailto:karima.eddahhak@eidia.ueuromed.org}{karima.eddahhak@eidia.ueuromed.org} \quad|\quad
+  \faLinkedin\ \lnk{https://www.linkedin.com/in/karima-ed-dahhak-8708461a9/}{LinkedIn} \quad|\quad
+  \faGithub\ \lnk{https://github.com/kdeeey}{GitHub} \quad|\quad
+  \faMapMarker*\ Fes, Morocco\\[1pt]
+  {\color{linkblue}Engineering Student -- Cybersecurity \& AI Systems}
+\end{center}
+
+\section{Profile}
+Engineering student at UEMF with a foundation in \textbf{cybersecurity}, \textbf{AI-driven systems}, and \textbf{data analysis}. Experienced in multidisciplinary projects combining \textbf{machine learning} and \textbf{real-time systems}. Interested in AI, autonomous systems, and cybersecurity, with strong motivation for international research-driven environments.
+
+\section{Education}
+\entry{Engineering Degree in Cybersecurity}{2025 -- Expected 2028}{Euro-Mediterranean University of Fes (UEMF) -- Fes, Morocco}
+\entry{Preparatory Classes in Digital Engineering}{2023 -- 2025}{Euro-Mediterranean University of Fes (UEMF) -- Fes, Morocco}
+
+\section{Experience}
+\textbf{AI \& Cybersecurity Engineering Intern} -- Direction Générale des Impôts (DGI), Rabat\hfill\textit{\small August 2026}
+\begin{itemize}
+  \item Built an end-to-end \textbf{public procurement analysis pipeline}: web scraping, \textbf{PDF/OCR}, \textbf{PySpark}, \textbf{PostgreSQL}
+  \item Detected unusual procurement patterns for \textbf{tax-risk assessment} with \textbf{Isolation Forest} and \textbf{SHAP}
+  \item Exposed results through a \textbf{FastAPI} service and a \lnk{https://public-procurement-intelligence.streamlit.app/}{deployed \textbf{Streamlit} dashboard}
+\end{itemize}
+\textbf{Offensive Security Intern} -- 1337 Khouribga\hfill\textit{\small Summer 2026}
+\begin{itemize}
+  \item Built and attacked an \textbf{Active Directory} lab (\textbf{Windows Server}, \textbf{Kali}): \textbf{Kerberoasting} attack chain + writeup
+  \item Developed \lnk{https://github.com/kdeeey/damn-vulnerable-rag}{\textbf{Damn Vulnerable RAG}}, a deliberately vulnerable RAG assistant (\textbf{Ollama}, \textbf{ChromaDB}, \textbf{Streamlit}) to study \textbf{prompt injection} attacks and defenses
+  \item Analyzed network traffic with \textbf{Wireshark} and wrote supporting tooling in \textbf{Python}
+\end{itemize}
+
+\section{CTF Competitions}
+\textbf{CSAW'26 CTF (NYU)} -- \textbf{Qualified for the in-person MENA Finals} (12--14 November 2026)\hfill\textit{\small Team 0xUEMF}\par
+\textbf{HTB Cyber Apocalypse 2026} -- Ranked \textbf{66th of 6,744 teams}, \textbf{136/136 challenges} solved\hfill\textit{\small Team 0xUEMF}\par
+\textbf{Securinets CTF 2026} -- \textbf{Qualified for the Finals} (Tunis, 12--13 Dec 2026) -- \#7 MENA\hfill\textit{\small Team 0xUEMF}\par
+
+\section{Projects}
+\entry{NOOD -- AI-Powered Public Speaking Coach}{Hack'Days Hackathon (UEMF)}{}
+\vspace{-\baselineskip}
+\begin{itemize}
+  \item Developed \textbf{multi-modal AI system} analyzing speech, body language, and content using \textbf{Python} (\textbf{MediaPipe}, \textbf{SpeechBrain}, \textbf{Librosa})
+  \item Built cross-platform desktop application using \textbf{Electron}, \textbf{React}, and \textbf{TypeScript}
+  \item Designed scoring system combining voice (40\%), body language (30\%), and content analysis (30\%)
+\end{itemize}
+\vspace{2pt}
+\entry{Satellite Cybersecurity System}{ACT IN SPACE International Hackathon}{}
+\vspace{-\baselineskip}
+\begin{itemize}
+  \item Designed \textbf{real-time satellite threat detection} system using \textbf{Machine Learning} models (\textbf{Isolation Forest}, \textbf{LSTM Autoencoder})
+  \item Simulated cyberattacks including \textbf{GPS spoofing}, \textbf{DoS}, and \textbf{signal jamming}
+  \item Built monitoring dashboard using \textbf{React}, \textbf{Three.js}, and \textbf{Docker} for autonomous threat detection
+\end{itemize}
+
+\section{Skills}
+\textbf{Programming:} Python, C/C++, SQL\\
+\textbf{AI \& Machine Learning:} Hugging Face, LLMs, RAG, prompt engineering, basic fine-tuning\\
+\textbf{Cybersecurity:} Offensive security fundamentals, network scanning, attack simulation\\
+\textbf{Systems \& Tools:} Linux CLI, Git, Docker, Virtual Machines\\
+\textbf{Languages:} Arabic (Native), French (B2), English (B2)
+
+\section{Certifications \& Training}
+\textbf{AWS Cloud Practitioner Essentials} -- Amazon Web Services (AWS)\hfill\textit{\small April 2026}
+
+\section{Extracurricular Activities}
+\textbf{SparkSec Cybersecurity Club -- Member:} cybersecurity workshops and hands-on labs\hfill\textit{\small 2024 -- Present}\\
+\textbf{Rotaract Club -- Member:} community service projects, leadership development\hfill\textit{\small 2023 -- Present}\\
+\textbf{Jeunes Bénévoles Association -- Volunteer:} social initiatives and community support\hfill\textit{\small 2023 -- Present}
+
+\end{document}

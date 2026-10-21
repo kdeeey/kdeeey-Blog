@@ -83,7 +83,8 @@ export interface Translation {
   };
   certificates: {
     title: string;
-    aws: CertEntry; cpts: CertEntry;
+    categories: { professional: string; ctf: string };
+    aws: CertEntry; securinets: CertEntry; cyberApocalypse: CertEntry; cpts: CertEntry;
     locked: string; comingSoon: string;
   };
   htb: {
@@ -185,7 +186,7 @@ export const translations: Record<Lang, Translation> = {
         internships: { pre: "SIDE QUESTS", cat: "INTERNSHIPS", sub: "2 QUESTS · SUMMER 2026" },
         ctf: { pre: "COMPETITIVE MODE", cat: "CTF", sub: "4 QUESTS COMPLETED" },
         hackathons: { pre: "BOSS BATTLES", cat: "HACKATHONS", sub: "3 BATTLES FOUGHT" },
-        certificates: { pre: "ACHIEVEMENTS UNLOCKED", cat: "CERTIFICATES", sub: "1 UNLOCKED · 1 IN PREPARATION" },
+        certificates: { pre: "ACHIEVEMENTS UNLOCKED", cat: "CERTIFICATES", sub: "3 UNLOCKED · 1 IN PREPARATION" },
         htb: { pre: "TRAINING GROUNDS", cat: "LABS", sub: "WRITEUPS COMING SOON" },
       },
     },
@@ -316,7 +317,10 @@ export const translations: Record<Lang, Translation> = {
     },
     certificates: {
       title: "ACHIEVEMENTS UNLOCKED · CERTIFICATES",
+      categories: { professional: "PROFESSIONAL CERTIFICATIONS", ctf: "CTF CERTIFICATES" },
       aws: { title: "AWS CLOUD PRACTITIONER ESSENTIALS", issuer: "Amazon Web Services (AWS)", tags: ["Cloud Computing", "April 2026"] },
+      securinets: { title: "SECURINETS CTF 2026 · QUALIFIED FOR THE FINALS", issuer: "Securinets · INSAT, Tunis", tags: ["#7 MENA", "October 2026"] },
+      cyberApocalypse: { title: "CYBER APOCALYPSE CTF 2026 · THE SALT CROWN", issuer: "Hack The Box", tags: ["66th / 6,744 Teams", "July 2026"] },
       cpts: { title: "CPTS · CERTIFIED PENETRATION TESTING SPECIALIST", issuer: "Hack The Box", tags: ["Penetration Testing", "Offensive Security"] },
       locked: "???",
       comingSoon: "COMING SOON",
@@ -421,7 +425,7 @@ export const translations: Record<Lang, Translation> = {
         internships: { pre: "QUÊTES ANNEXES", cat: "STAGES", sub: "2 QUÊTES · ÉTÉ 2026" },
         ctf: { pre: "MODE COMPÉTITIF", cat: "CTF", sub: "4 QUÊTES TERMINÉES" },
         hackathons: { pre: "COMBATS DE BOSS", cat: "HACKATHONS", sub: "3 COMBATS MENÉS" },
-        certificates: { pre: "SUCCÈS DÉBLOQUÉS", cat: "CERTIFICATS", sub: "1 DÉBLOQUÉ · 1 EN PRÉPARATION" },
+        certificates: { pre: "SUCCÈS DÉBLOQUÉS", cat: "CERTIFICATS", sub: "3 DÉBLOQUÉS · 1 EN PRÉPARATION" },
         htb: { pre: "TERRAINS D'ENTRAÎNEMENT", cat: "LABS", sub: "WRITEUPS BIENTÔT" },
       },
     },
@@ -552,7 +556,10 @@ export const translations: Record<Lang, Translation> = {
     },
     certificates: {
       title: "SUCCÈS DÉBLOQUÉS · CERTIFICATS",
+      categories: { professional: "CERTIFICATIONS PROFESSIONNELLES", ctf: "CERTIFICATS CTF" },
       aws: { title: "AWS CLOUD PRACTITIONER ESSENTIALS", issuer: "Amazon Web Services (AWS)", tags: ["Cloud Computing", "Avril 2026"] },
+      securinets: { title: "SECURINETS CTF 2026 · QUALIFIÉE POUR LA FINALE", issuer: "Securinets · INSAT, Tunis", tags: ["#7 MENA", "Octobre 2026"] },
+      cyberApocalypse: { title: "CYBER APOCALYPSE CTF 2026 · THE SALT CROWN", issuer: "Hack The Box", tags: ["66e / 6 744 équipes", "Juillet 2026"] },
       cpts: { title: "CPTS · CERTIFIED PENETRATION TESTING SPECIALIST", issuer: "Hack The Box", tags: ["Tests de Pénétration", "Sécurité Offensive"] },
       locked: "???",
       comingSoon: "BIENTÔT DISPONIBLE",
