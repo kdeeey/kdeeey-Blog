@@ -1,6 +1,8 @@
 "use client";
+import { useState } from "react";
 import { useApp } from "../providers";
 import Tag from "./Tag";
+import Lightbox, { ZoomHint } from "./Lightbox";
 import { trackCertificateOpen } from "@/lib/analytics";
 import type { CertItem } from "@/types";
 
@@ -16,6 +18,7 @@ function Lock() {
 
 export default function CertificateCard({ item }: { item: CertItem }) {
   const { t } = useApp();
+  const [zoomed, setZoomed] = useState(false);
   if (item.status === "locked") {
     return (
       <div className="border-[3px] border-dashed border-[#b9b9b9] bg-bg opacity-60 min-h-[240px] flex flex-col items-center justify-center gap-3">
@@ -30,10 +33,19 @@ export default function CertificateCard({ item }: { item: CertItem }) {
       className="relative bg-card border-[3px] border-ink shadow-pixelLg p-4 flex flex-col gap-2.5"
       onClick={() => trackCertificateOpen(item.title)}
     >
-      <div className="w-full h-[180px] border-2 border-ink bg-[#f8f8f8] flex items-center justify-center overflow-hidden">
+      {zoomed && item.image && <Lightbox src={item.image} alt={item.title} onClose={() => setZoomed(false)} />}
+      <div className="relative w-full h-[180px] border-2 border-ink bg-[#f8f8f8] flex items-center justify-center overflow-hidden">
         {item.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={item.image}
+              alt={item.title}
+              onClick={() => setZoomed(true)}
+              className="w-full h-full object-contain cursor-zoom-in"
+            />
+            <ZoomHint />
+          </>
         ) : (
           <Lock />
         )}
